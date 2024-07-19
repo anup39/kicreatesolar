@@ -7,14 +7,6 @@ const initialState = {
   error: null,
   usersS1: [],
   usersS2: [],
-  followers: [],
-  friendRequests: [],
-  friends: [],
-  gallery: [],
-  posts: [],
-  detailsCards: [],
-  simpleCards: [],
-  profileCards: [],
 };
 
 const slice = createSlice({
