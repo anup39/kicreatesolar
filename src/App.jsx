@@ -21,11 +21,11 @@
 // ==============================|| APP ||============================== //
 
 import SamplePage from "./views/sample-page";
-import { lazy, Suspense } from "react";
+import { lazy } from "react";
 // import LowerComponent from "./views/sample-page/LowerComponent";
 
-const FinalComponent = lazy(() =>
-  import("./views/sample-page/LowerComponent.jsx")
+const FinalComponent = SamplePage(
+  lazy(() => import("./views/sample-page/LowerComponent.jsx"))
 );
 
 const App = () => {
@@ -46,9 +46,8 @@ const App = () => {
     //     </Locales>
     //   </RTLLayout>
     // </ThemeCustomization>
-    <Suspense>
-      <FinalComponent />
-    </Suspense>
+
+    <FinalComponent />
   );
 };
 
