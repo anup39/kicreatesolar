@@ -24,30 +24,30 @@ import SamplePage from "./views/sample-page";
 import { lazy } from "react";
 // import LowerComponent from "./views/sample-page/LowerComponent";
 
+import ThemeCustomization from "./themes/index.jsx";
+
 const FinalComponent = SamplePage(
   lazy(() => import("./views/sample-page/LowerComponent.jsx"))
 );
 
 const App = () => {
   return (
-    // <ThemeCustomization>
-    //   <RTLLayout>
-    //     <Locales>
-    //       <NavigationScroll>
-    //         <AuthProvider>
-    //           <>
-    //             <Notistack>
-    //               <RouterProvider router={router} />
-    //               <Snackbar />
-    //             </Notistack>
-    //           </>
-    //         </AuthProvider>
-    //       </NavigationScroll>
-    //     </Locales>
-    //   </RTLLayout>
-    // </ThemeCustomization>
-
-    <FinalComponent />
+    <ThemeCustomization>
+      <RTLLayout>
+        <Locales>
+          <NavigationScroll>
+            <AuthProvider>
+              <>
+                <Notistack>
+                  <RouterProvider router={router} />
+                  <Snackbar />
+                </Notistack>
+              </>
+            </AuthProvider>
+          </NavigationScroll>
+        </Locales>
+      </RTLLayout>
+    </ThemeCustomization>
   );
 };
 
