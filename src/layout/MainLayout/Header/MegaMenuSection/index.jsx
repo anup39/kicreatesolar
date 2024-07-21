@@ -73,24 +73,8 @@ const linkList = [
     label: "User Quick",
     children: [
       {
-        link: "/apps/user/social-profile/posts",
-        label: "Social Profile",
-      },
-      {
-        link: "/apps/user/account-profile/profile1",
-        label: "Account Profile",
-      },
-      {
-        link: "/apps/user/card/card1",
-        label: "User Cards",
-      },
-      {
-        link: "/apps/user/list/list2",
-        label: "User List",
-      },
-      {
-        link: "/apps/contact/c-card",
-        label: "Contact",
+        link: "/dashboard/default",
+        label: "Dashboard",
       },
     ],
   },
@@ -99,24 +83,8 @@ const linkList = [
     label: "Applications",
     children: [
       {
-        link: "/apps/chat",
-        label: "Chat",
-      },
-      {
-        link: "/apps/kanban/board",
-        label: "Kanban",
-      },
-      {
-        link: "/apps/mail",
-        label: "Mail",
-      },
-      {
-        link: "/apps/calendar",
-        label: "Calendar",
-      },
-      {
         link: "/apps/e-commerce/products",
-        label: "E-commerce",
+        label: "Products",
       },
     ],
   },
@@ -127,23 +95,6 @@ const linkList = [
       {
         link: "/utils/util-color",
         label: "Colors",
-      },
-      {
-        link: "/utils/util-typography",
-        label: "Typography",
-      },
-      {
-        link: "/utils/util-shadow",
-        label: "Shadows",
-      },
-      {
-        link: "https://tabler-icons.io/",
-        label: "Icons",
-        target: "_blank",
-      },
-      {
-        link: "/basic/accordion",
-        label: "Elements",
       },
     ],
   },

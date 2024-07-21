@@ -13,7 +13,7 @@ import ProfileSection from "./ProfileSection";
 import LocalizationSection from "./LocalizationSection";
 import MegaMenuSection from "./MegaMenuSection";
 import FullScreenSection from "./FullScreenSection";
-import NotificationSection from "./NotificationSection";
+// import NotificationSection from "./NotificationSection";
 
 import { handlerDrawerOpen, useGetMenuMaster } from "../../../api/menu";
 import { MenuOrientation, ThemeMode } from "../../../config";
@@ -94,7 +94,7 @@ const Header = () => {
       </Box>
 
       {/* notification */}
-      <NotificationSection />
+      {/* <NotificationSection /> */}
 
       {/* full sceen toggler */}
       <Box sx={{ display: { xs: "none", lg: "block" } }}>
