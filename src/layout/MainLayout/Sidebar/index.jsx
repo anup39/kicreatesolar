@@ -21,6 +21,7 @@ import { MenuOrientation } from "../../../config";
 import { drawerWidth } from "../../../store/constant";
 
 import { handlerDrawerOpen, useGetMenuMaster } from "../../../api/menu";
+import UpgradePlanCard from "../Header/ProfileSection/UpgradePlanCard";
 
 // ==============================|| SIDEBAR DRAWER ||============================== //
 
@@ -46,7 +47,8 @@ const Sidebar = () => {
       menuOrientation === MenuOrientation.VERTICAL && drawerOpen;
     const drawerContent = (
       <>
-        <MenuCard />
+        {/* <MenuCard /> */}
+        <UpgradePlanCard />
         <Stack direction="row" justifyContent="center" sx={{ mb: 2 }}>
           <Chip
             label={import.meta.env.VITE_APP_VERSION}

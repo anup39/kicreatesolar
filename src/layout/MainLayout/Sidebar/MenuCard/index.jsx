@@ -134,9 +134,7 @@ const MenuCard = () => {
                         ? "dark.light"
                         : "primary.800",
                   }}
-                >
-                  Get Extra Space
-                </Typography>
+                ></Typography>
               }
               secondary={<Typography variant="caption"> 28/23 GB</Typography>}
             />
