@@ -10,22 +10,6 @@ import Loadable from "ui-component/Loadable";
 const AuthLogin = Loadable(
   lazy(() => import("views/pages/authentication/authentication3/Login3"))
 );
-const AuthRegister = Loadable(
-  lazy(() => import("views/pages/authentication/authentication3/Register3"))
-);
-const AuthForgotPassword = Loadable(
-  lazy(() =>
-    import("views/pages/authentication/authentication3/ForgotPassword3")
-  )
-);
-const AuthResetPassword = Loadable(
-  lazy(() =>
-    import("views/pages/authentication/authentication3/ResetPassword3")
-  )
-);
-const AuthCheckMail = Loadable(
-  lazy(() => import("views/pages/authentication/authentication3/CheckMail3"))
-);
 
 // ==============================|| AUTH ROUTING ||============================== //
 
@@ -42,22 +26,6 @@ const LoginRoutes = {
     {
       path: "/login",
       element: <AuthLogin />,
-    },
-    {
-      path: "/register",
-      element: <AuthRegister />,
-    },
-    {
-      path: "/forgot",
-      element: <AuthForgotPassword />,
-    },
-    {
-      path: "/reset-password",
-      element: <AuthResetPassword />,
-    },
-    {
-      path: "/check-mail",
-      element: <AuthCheckMail />,
     },
   ],
 };

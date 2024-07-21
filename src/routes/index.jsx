@@ -7,9 +7,9 @@ import LoginRoutes from "./LoginRoutes";
 import AuthenticationRoutes from "./AuthenticationRoutes";
 
 // project import
-import Loadable from "ui-component/Loadable";
+import Loadable from "../ui-component/Loadable";
 
-const PagesLanding = Loadable(lazy(() => import("views/pages/landing")));
+const PagesLanding = Loadable(lazy(() => import("../views/pages/landing")));
 
 // ==============================|| ROUTING RENDER ||============================== //
 const router = createBrowserRouter(

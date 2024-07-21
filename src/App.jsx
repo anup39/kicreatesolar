@@ -1,18 +1,18 @@
-// import { RouterProvider } from "react-router-dom";
+import { RouterProvider } from "react-router-dom";
 
-// // routing
-// import router from "routes";
+// routing
+import router from "routes";
 
-// // project imports
+// project imports
 import Locales from "./ui-component/Locales";
 import NavigationScroll from "./layout/NavigationScroll";
 import RTLLayout from "./ui-component/RTLLayout";
 import Snackbar from "./ui-component/extended/Snackbar";
 import Notistack from "./ui-component/third-party/Notistack";
 
-// import ThemeCustomization from "themes";
+import ThemeCustomization from "./themes/index.jsx";
 
-// // auth provider
+// auth provider
 import { JWTProvider as AuthProvider } from "./contexts/JWTContext";
 // import { FirebaseProvider as AuthProvider } from 'contexts/FirebaseContext';
 // import { AWSCognitoProvider as AuthProvider } from 'contexts/AWSCognitoContext';
@@ -23,8 +23,6 @@ import { JWTProvider as AuthProvider } from "./contexts/JWTContext";
 import SamplePage from "./views/sample-page";
 import { lazy } from "react";
 // import LowerComponent from "./views/sample-page/LowerComponent";
-
-import ThemeCustomization from "./themes/index.jsx";
 
 const FinalComponent = SamplePage(
   lazy(() => import("./views/sample-page/LowerComponent.jsx"))
