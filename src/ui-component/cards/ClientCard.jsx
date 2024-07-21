@@ -13,7 +13,7 @@ import Typography from "@mui/material/Typography";
 
 // project import
 import MainCard from "./MainCard";
-import SkeletonProductPlaceholder from "../cards/Skeleton/ProductPlaceholder";
+import SkeletonClientPlaceholder from "./Skeleton/ClientPlaceholder";
 import { getImageUrl, ImagePath } from "../../utils/getImageUrl";
 
 import { useDispatch, useSelector } from "../../store";
@@ -25,7 +25,7 @@ import ShoppingCartTwoToneIcon from "@mui/icons-material/ShoppingCartTwoTone";
 
 // ==============================|| PRODUCT CARD ||============================== //
 
-const ProductCard = ({
+const ClientCard = ({
   id,
   color,
   name,
@@ -68,7 +68,7 @@ const ProductCard = ({
   return (
     <>
       {isLoading ? (
-        <SkeletonProductPlaceholder />
+        <SkeletonClientPlaceholder />
       ) : (
         <MainCard
           content={false}
@@ -167,7 +167,7 @@ const ProductCard = ({
   );
 };
 
-ProductCard.propTypes = {
+ClientCard.propTypes = {
   id: PropTypes.number,
   color: PropTypes.string,
   name: PropTypes.string,
@@ -178,4 +178,4 @@ ProductCard.propTypes = {
   rating: PropTypes.number,
 };
 
-export default ProductCard;
+export default ClientCard;
