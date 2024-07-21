@@ -38,7 +38,9 @@ const Login = () => {
           alignItems="center"
           sx={{ minHeight: "calc(100vh - 68px)" }}
         >
-          <Grid item sx={{ m: { xs: 1, sm: 3 }, mb: 0 }}></Grid>
+          <Grid item sx={{ m: { xs: 1, sm: 3 }, mb: 0 }}>
+            <div>Login Page</div>
+          </Grid>
         </Grid>
       </Grid>
       <Grid item xs={12} sx={{ m: 3, mt: 1 }}>

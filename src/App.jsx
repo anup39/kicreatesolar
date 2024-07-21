@@ -1,7 +1,7 @@
 import { RouterProvider } from "react-router-dom";
 
 // routing
-import router from "routes";
+import router from "./routes";
 
 // project imports
 import Locales from "./ui-component/Locales";
@@ -19,14 +19,6 @@ import { JWTProvider as AuthProvider } from "./contexts/JWTContext";
 // import { Auth0Provider as AuthProvider } from 'contexts/Auth0Context';
 
 // ==============================|| APP ||============================== //
-
-import SamplePage from "./views/sample-page";
-import { lazy } from "react";
-// import LowerComponent from "./views/sample-page/LowerComponent";
-
-const FinalComponent = SamplePage(
-  lazy(() => import("./views/sample-page/LowerComponent.jsx"))
-);
 
 const App = () => {
   return (
