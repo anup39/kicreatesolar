@@ -7,7 +7,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 // project imports
 import useConfig from "../../../hooks/useConfig";
 import LogoSection from "../LogoSection";
-import SearchSection from "./SearchSection";
+// import SearchSection from "./SearchSection";
 import MobileSection from "./MobileSection";
 import ProfileSection from "./ProfileSection";
 import LocalizationSection from "./LocalizationSection";
@@ -73,7 +73,7 @@ const Header = () => {
       </Box>
 
       {/* header search */}
-      <SearchSection />
+      {/* <SearchSection /> */}
       <Box sx={{ flexGrow: 1 }} />
       <Box sx={{ flexGrow: 1 }} />
 
