@@ -83,8 +83,8 @@ const linkList = [
     label: "Applications",
     children: [
       {
-        link: "/apps/e-commerce/products",
-        label: "Products",
+        link: "/apps/clients",
+        label: "Clients",
       },
     ],
   },
