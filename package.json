@@ -26,7 +26,9 @@
     "stylis-plugin-rtl": "^2.1.1",
     "react-intl": "^6.6.2",
     "chance": "^1.1.11",
-    "jwt-decode": "^4.0.0"
+    "jwt-decode": "^4.0.0",
+    "notistack": "^3.0.1",
+    "@tabler/icons-react": "^2.47.0"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
