@@ -100,6 +100,7 @@ const NavItem = ({ item, level, isParents = false, setSelectedID }) => {
             zIndex: 1201,
             borderRadius: `${borderRadius}px`,
             mb: 0.5,
+            mt: 1.5,
             pl: drawerOpen ? `${level * 24}px` : 1.25,
             ...(drawerOpen &&
               level === 1 &&

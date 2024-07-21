@@ -16,7 +16,9 @@ const Logo = () => {
     <img
       src={theme.palette.mode === ThemeMode.DARK ? logoDark : logo}
       alt="Berry"
-      width="100"
+      width="150"
+      height="20"
+      style={{ objectFit: "contain", objectPosition: "center" }} // Adjust these values as needed
     />
 
     // <svg

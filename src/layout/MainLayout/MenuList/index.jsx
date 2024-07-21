@@ -103,7 +103,7 @@ const MenuList = () => {
     });
 
   return !isHorizontal ? (
-    <Box {...(drawerOpen && { sx: { mt: 1.5 } })}>{navItems}</Box>
+    <Box {...(drawerOpen && { sx: { mt: 3 } })}>{navItems}</Box>
   ) : (
     <>{navItems}</>
   );
