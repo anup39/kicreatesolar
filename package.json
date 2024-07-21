@@ -31,7 +31,9 @@
     "@tabler/icons-react": "^2.47.0",
     "framer-motion": "^11.0.6",
     "lodash-es": "^4.17.21",
-    "swr": "^2.2.5"
+    "swr": "^2.2.5",
+    "react-perfect-scrollbar": "^1.5.8",
+    "material-ui-popup-state": "^5.0.10"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
