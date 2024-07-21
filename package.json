@@ -33,7 +33,13 @@
     "lodash-es": "^4.17.21",
     "swr": "^2.2.5",
     "react-perfect-scrollbar": "^1.5.8",
-    "material-ui-popup-state": "^5.0.10"
+    "material-ui-popup-state": "^5.0.10",
+    "@fontsource/inter": "^5.0.16",
+    "@fontsource/poppins": "^5.0.8",
+    "@fontsource/roboto": "^5.0.8",
+    "slick-carousel": "^1.8.1",
+    "react-18-image-lightbox": "^5.1.4",
+    "react-responsive-carousel": "^3.2.23"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
