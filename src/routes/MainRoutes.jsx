@@ -22,7 +22,7 @@ const AppECommProducts = Loadable(
 // );
 
 // sample page routing
-const SamplePage = Loadable(lazy(() => import("views/sample-page")));
+const SamplePage = Loadable(lazy(() => import("../views/sample-page")));
 
 // ==============================|| MAIN ROUTING ||============================== //
 
