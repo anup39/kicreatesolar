@@ -7,7 +7,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import StyledEngineProvider from "@mui/material/StyledEngineProvider";
 
 // project import
-import useConfig from "hooks/useConfig";
+import useConfig from "../hooks/useConfig";
 import Palette from "./palette";
 import Typography from "./typography";
 
