@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useSelector } from "store";
+import { useSelector } from "../../store";
 
 // third partys
 import { sum } from "lodash-es/lodash";

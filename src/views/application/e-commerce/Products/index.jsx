@@ -15,7 +15,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import ProductEmpty from "./ProductEmpty";
 
 import ProductCard from "../../../../ui-component/cards/ProductCard";
-import FloatingCart from "../../../../ui-component/cards/FloatingCart";
+import FloatingCart from "../../../../ui-component/cards/FloatingCard";
 import SkeletonProductPlaceholder from "../../../../ui-component/cards/Skeleton/ProductPlaceholder";
 
 // import { resetCart } from "store/slices/cart";
