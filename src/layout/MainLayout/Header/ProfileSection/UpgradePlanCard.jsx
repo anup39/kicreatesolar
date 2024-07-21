@@ -71,7 +71,7 @@ const UpgradePlanCard = () => {
             <Stack direction="row">
               <Link
                 sx={{ textDecoration: "none" }}
-                href="https://links.codedthemes.com/hsqll"
+                href="https://b3d.dk/"
                 target="_blank"
               >
                 <AnimateButton>
