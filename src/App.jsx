@@ -4,13 +4,9 @@ import { RouterProvider } from "react-router-dom";
 import router from "./routes";
 
 // project imports
-import Locales from "./ui-component/Locales";
-import NavigationScroll from "./layout/NavigationScroll";
-import RTLLayout from "./ui-component/RTLLayout";
-import Snackbar from "./ui-component/extended/Snackbar";
-import Notistack from "./ui-component/third-party/Notistack";
 
-import ThemeCustomization from "./themes/index.jsx";
+import AppWrapper from "./AppWrapper";
+import Snackbar from "../src/ui-component/extended/Snackbar";
 
 // auth provider
 import { JWTProvider as AuthProvider } from "./contexts/JWTContext";
@@ -22,22 +18,10 @@ import { JWTProvider as AuthProvider } from "./contexts/JWTContext";
 
 const App = () => {
   return (
-    <ThemeCustomization>
-      <RTLLayout>
-        <Locales>
-          <NavigationScroll>
-            <AuthProvider>
-              <>
-                <Notistack>
-                  <RouterProvider router={router} />
-                  <Snackbar />
-                </Notistack>
-              </>
-            </AuthProvider>
-          </NavigationScroll>
-        </Locales>
-      </RTLLayout>
-    </ThemeCustomization>
+    <AppWrapper>
+      <RouterProvider router={router} />
+      <Snackbar />
+    </AppWrapper>
   );
 };
 

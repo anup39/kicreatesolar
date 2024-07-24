@@ -116,7 +116,7 @@ const ClientsList = () => {
         >
           <Grid item>
             <Stack direction="row" alignItems="center" spacing={1}>
-              <Typography variant="h4">Shop</Typography>
+              <Typography variant="h4">Clients</Typography>
               <IconButton size="large" aria-label="go to shopping">
                 <ArrowForwardIosIcon
                   sx={{
@@ -149,7 +149,7 @@ const ClientsList = () => {
           </Stack>
         </Box>
       </Grid>
-      <FloatingCart />
+      {/* <FloatingCart /> */}
     </Grid>
   );
 };

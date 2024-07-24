@@ -31,12 +31,12 @@ import "@fontsource/poppins/700.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Provider store={store}>
+    {/* <Provider store={store}>
       <PersistGate loading={null} persistor={persister}>
-        <ConfigProvider>
-          <App />
-        </ConfigProvider>
+        <ConfigProvider> */}
+    <App />
+    {/* </ConfigProvider>
       </PersistGate>
-    </Provider>
+    </Provider> */}
   </React.StrictMode>
 );
