@@ -7,13 +7,13 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 // project imports
 import useConfig from "../../../hooks/useConfig";
 import LogoSection from "../LogoSection";
-import SearchSection from "./SearchSection";
+// import SearchSection from "./SearchSection";
 import MobileSection from "./MobileSection";
 import ProfileSection from "./ProfileSection";
 import LocalizationSection from "./LocalizationSection";
 import MegaMenuSection from "./MegaMenuSection";
 import FullScreenSection from "./FullScreenSection";
-import NotificationSection from "./NotificationSection";
+// import NotificationSection from "./NotificationSection";
 
 import { handlerDrawerOpen, useGetMenuMaster } from "../../../api/menu";
 import { MenuOrientation, ThemeMode } from "../../../config";
@@ -36,7 +36,13 @@ const Header = () => {
   return (
     <>
       {/* logo & toggler button */}
-      <Box sx={{ width: downMD ? "auto" : 228, display: "flex" }}>
+      <Box
+        sx={{
+          width: downMD ? "auto" : 228,
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
         <Box
           component="span"
           sx={{ display: { xs: "none", md: "block" }, flexGrow: 1 }}
@@ -73,7 +79,7 @@ const Header = () => {
       </Box>
 
       {/* header search */}
-      <SearchSection />
+      {/* <SearchSection /> */}
       <Box sx={{ flexGrow: 1 }} />
       <Box sx={{ flexGrow: 1 }} />
 
@@ -88,7 +94,7 @@ const Header = () => {
       </Box>
 
       {/* notification */}
-      <NotificationSection />
+      {/* <NotificationSection /> */}
 
       {/* full sceen toggler */}
       <Box sx={{ display: { xs: "none", lg: "block" } }}>

@@ -12,11 +12,11 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
-import ProductEmpty from "./ProductEmpty";
+import ClientsListEmpty from "./ClientsListEmpty";
 
-import ProductCard from "../../../../ui-component/cards/ProductCard";
+import ClientCard from "../../../../ui-component/cards/ClientCard";
 import FloatingCart from "../../../../ui-component/cards/FloatingCard";
-import SkeletonProductPlaceholder from "../../../../ui-component/cards/Skeleton/ProductPlaceholder";
+import SkeletonClientPlaceholder from "../../../../ui-component/cards/Skeleton/ClientPlaceholder";
 
 // import { resetCart } from "store/slices/cart";
 // import { dispatch, useSelector } from "store";
@@ -28,7 +28,7 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 // ==============================|| E-COMMERCE - PRODUCT GRID ||============================== //
 
-const ProductsList = () => {
+const ClientsList = () => {
   //   const cart = useSelector((state) => state.cart);
 
   const matchDownMD = useMediaQuery((theme) => theme.breakpoints.down("lg"));
@@ -85,7 +85,7 @@ const ProductsList = () => {
   if (products && products.length > 0) {
     productResult = products.map((product, index) => (
       <Grid key={index} item xs={12} sm={6} md={4} lg={3}>
-        <ProductCard
+        <ClientCard
           id={product.id}
           image={product.image}
           name={product.name}
@@ -100,7 +100,7 @@ const ProductsList = () => {
   } else {
     productResult = (
       <Grid item xs={12} sx={{ mt: 3 }}>
-        <ProductEmpty />
+        <ClientsListEmpty />
       </Grid>
     );
   }
@@ -116,7 +116,7 @@ const ProductsList = () => {
         >
           <Grid item>
             <Stack direction="row" alignItems="center" spacing={1}>
-              <Typography variant="h4">Shop</Typography>
+              <Typography variant="h4">Clients</Typography>
               <IconButton size="large" aria-label="go to shopping">
                 <ArrowForwardIosIcon
                   sx={{
@@ -141,7 +141,7 @@ const ProductsList = () => {
               {productLoading
                 ? [1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
                     <Grid key={item} item xs={12} sm={6} md={4} lg={3}>
-                      <SkeletonProductPlaceholder />
+                      <SkeletonClientPlaceholder />
                     </Grid>
                   ))
                 : productResult}
@@ -149,9 +149,9 @@ const ProductsList = () => {
           </Stack>
         </Box>
       </Grid>
-      <FloatingCart />
+      {/* <FloatingCart /> */}
     </Grid>
   );
 };
 
-export default ProductsList;
+export default ClientsList;

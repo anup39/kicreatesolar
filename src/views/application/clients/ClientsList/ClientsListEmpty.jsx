@@ -13,9 +13,9 @@ import { ThemeMode } from "../../../../config";
 import imageEmpty from "../../../../assets/images/e-commerce/empty.svg";
 import imageDarkEmpty from "../../../../assets/images/e-commerce/empty-dark.svg";
 
-// ==============================|| NO/EMPTY Product ||============================== //
+// ==============================|| NO/EMPTY Clients List ||============================== //
 
-const ProductEmpty = () => {
+const ClientsListEmpty = () => {
   const theme = useTheme();
 
   return (
@@ -38,7 +38,7 @@ const ProductEmpty = () => {
               <Grid container spacing={gridSpacing}>
                 <Grid item xs={12}>
                   <Typography variant="h1" color="inherit">
-                    There is no Product
+                    There is no Clients
                   </Typography>
                 </Grid>
                 <Grid item xs={12}>
@@ -55,4 +55,4 @@ const ProductEmpty = () => {
   );
 };
 
-export default ProductEmpty;
+export default ClientsListEmpty;

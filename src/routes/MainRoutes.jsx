@@ -14,8 +14,8 @@ const DashboardDefault = Loadable(
 );
 
 // application - e-commerce routing
-const AppECommProducts = Loadable(
-  lazy(() => import("../views/application/e-commerce/Products"))
+const AppClients = Loadable(
+  lazy(() => import("../views/application/clients/ClientsList"))
 );
 // const AppECommProductDetails = Loadable(
 //   lazy(() => import("views/application/e-commerce/ProductDetails"))
@@ -35,8 +35,8 @@ const MainRoutes = {
   ),
   children: [
     {
-      path: "/apps/e-commerce/products",
-      element: <AppECommProducts />,
+      path: "/apps/clients",
+      element: <AppClients />,
       loader: productsLoader,
       errorElement: <ErrorBoundary />,
     },

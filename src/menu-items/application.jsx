@@ -36,38 +36,41 @@ const application = {
   type: "group",
   children: [
     {
-      id: "e-commerce",
-      title: <FormattedMessage id="e-commerce" />,
-      type: "collapse",
+      id: "clients",
+      title: <FormattedMessage id="clients" />,
+      type: "item",
+      url: "/apps/clients",
       icon: icons.IconBasket,
-      children: [
-        {
-          id: "products",
-          title: <FormattedMessage id="products" />,
-          type: "item",
-          url: "/apps/e-commerce/products",
-        },
-        {
-          id: "product-details",
-          title: <FormattedMessage id="product-details" />,
-          type: "item",
-          link: "/apps/e-commerce/product-details/:id",
-          url: "/apps/e-commerce/product-details/1",
-          breadcrumbs: false,
-        },
-        {
-          id: "product-list",
-          title: <FormattedMessage id="product-list" />,
-          type: "item",
-          url: "/apps/e-commerce/product-list",
-        },
-        {
-          id: "checkout",
-          title: <FormattedMessage id="checkout" />,
-          type: "item",
-          url: "/apps/e-commerce/checkout",
-        },
-      ],
+      breadcrumbs: false,
+
+      // children: [
+      // {
+      //   id: "clients",
+      //   title: <FormattedMessage id="clients-list" />,
+      //   type: "item",
+      //   url: "/apps/clients/client-list",
+      // },
+      // {
+      //   id: "product-details",
+      //   title: <FormattedMessage id="product-details" />,
+      //   type: "item",
+      //   link: "/apps/e-commerce/product-details/:id",
+      //   url: "/apps/e-commerce/product-details/1",
+      //   breadcrumbs: false,
+      // },
+      // {
+      //   id: "product-list",
+      //   title: <FormattedMessage id="product-list" />,
+      //   type: "item",
+      //   url: "/apps/e-commerce/product-list",
+      // },
+      // {
+      //   id: "checkout",
+      //   title: <FormattedMessage id="checkout" />,
+      //   type: "item",
+      //   url: "/apps/e-commerce/checkout",
+      // },
+      // ],
     },
   ],
 };

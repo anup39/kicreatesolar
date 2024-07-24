@@ -2,12 +2,10 @@
     "dashboard": "资讯主页",
     "default": "默认",
     "analytics": "分析工具",
-
     "widget": "小部件",
     "statistics": "统计数据",
     "data": "数据",
     "chart": "图表",
-
     "application": "应用",
     "users": "用户数",
     "social-profile": "社会概况",
@@ -52,7 +50,6 @@
     "statement": "陳述",
     "refund": "退款",
     "earning": "效益",
-
     "forms": "形式",
     "components": "组件",
     "autocomplete": "自动完成",
@@ -97,7 +94,6 @@
     "multi-column-forms": "多列表格",
     "action-bar": "操作栏",
     "sticky-action-bar": "粘性操作栏",
-
     "ui-element": "使用者介面 元素",
     "basic": "基本的",
     "basic-caption": "8+ 基本组件",
@@ -119,7 +115,6 @@
     "timeline": "时间线",
     "toggle-button": "切换按钮",
     "treeview": "树视图",
-
     "pages": "页数",
     "pages-caption": "预建页面",
     "authentication": "验证",
@@ -141,7 +136,6 @@
     "contact-us": "联系我们",
     "faqs": "常见问题",
     "privacy-policy": "隐私政策",
-
     "utilities": "实用工具",
     "typography": "版式",
     "color": "颜色",
@@ -151,7 +145,6 @@
     "material-icons": "材质图标",
     "animation": "动画片",
     "grid": "网格",
-
     "others": "其他",
     "menu-level": "菜单级别",
     "level": "等级",
@@ -165,18 +158,15 @@
     "coded": "已编码",
     "c": "C",
     "outlined": "概述",
-
     "sample-page": "样本页面",
     "documentation": "文献资料",
     "roadmap": "路线图",
-
     "title": "多语言",
     "home": "家",
     "change": "改变语言",
     "message": "悲楚 坐镇，奉献自若，西里乌斯·杜伊乌斯莫德·临时工与劳动和多尔纳·马尼亚·阿利夸。 尽量不要抽烟，不要因抽烟而锻炼。 他希望在 受到指责，但是痛苦是在 足球比赛中没有产生任何逃脱的痛苦！。 不擅长于圣人的圣杯，只能在因犯罪而告终的罪魁祸首中胜诉。",
-
     "account-settings": "帳號設定",
     "logout": "登出",
-
-    "more-items": "更多項目"
+    "more-items": "更多項目",
+    "clients": "Clients"
 }

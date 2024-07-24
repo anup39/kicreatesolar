@@ -2,12 +2,10 @@
     "dashboard": "Tableau de bord",
     "default": ",Défaut",
     "analytics": "Analytique",
-
     "widget": "Widget",
     "statistics": "Statistiques",
     "data": "Donnés",
     "chart": "Graphique",
-
     "application": "Application",
     "users": "Utilisatrices",
     "social-profile": "Profil social",
@@ -52,7 +50,6 @@
     "statement": "Déclaration",
     "refund": "Remboursement",
     "earning": "Revenus",
-
     "forms": "Formes",
     "components": "Composantes",
     "autocomplete": "Saisie Automatique",
@@ -97,7 +94,6 @@
     "multi-column-forms": "Formulaires multi-colonnes",
     "action-bar": "Barre d'action",
     "sticky-action-bar": "Barre d'action collante",
-
     "ui-element": "Élément UI",
     "basic": "De base",
     "basic-caption": "8+ composants de base",
@@ -119,7 +115,6 @@
     "timeline": "Chronologie",
     "toggle-button": "Bouton à bascule",
     "treeview": "Vue arborescente",
-
     "pages": "Des pages",
     "pages-caption": "Pages pré-construites",
     "authentication": "Authentification",
@@ -141,7 +136,6 @@
     "contact-us": "Nous contacter",
     "faqs": "FAQ",
     "privacy-policy": "Politique de confidentialité",
-
     "utilities": "Utilitaires",
     "typography": "Typographie",
     "color": "Couleur",
@@ -151,7 +145,6 @@
     "material-icons": "Material Icons",
     "animation": "Animation",
     "grid": "Grille",
-
     "others": "Autres",
     "menu-level": "Niveaux de menu",
     "level": "Niveau",
@@ -165,18 +158,15 @@
     "coded": "Codé",
     "c": "C",
     "outlined": "Souligné",
-
     "sample-page": "Page d'exemple",
     "documentation": "Documentation",
     "roadmap": "Feuille de route",
-
     "title": "Multi Limbaj",
     "home": "Acasă",
     "change": "Schimbați limba",
     "message": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed tempor și vitality, astfel încât munca și tristețea, unele lucruri importante de făcut eiusmod. De-a lungul anilor, voi veni, care va scoate de la ea orice echipă din avantajul exercițiului, astfel încât să stimuleze eforturile dacă districtul școlar și longevitatea. Vrei să fii o durere în cupidatat cillum a fost criticat în plăcerea de a plăti Duis et dolore magna fugiatnulla. Excepteur cupidatat not excepteur they are blacks, they deserted the mollitanim that services ar trebui să fie, adică ei sunt de vină pentru necazurile tale.",
-
     "account-settings": "Paramètres du compte",
     "logout": "Se déconnecter",
-
-    "more-items": "Plus d'articles"
+    "more-items": "Plus d'articles",
+    "clients": "Clients"
 }
