@@ -18,6 +18,23 @@ function ViewportAnimation({ data, ...other }) {
   const onSelectCity = useCallback((event, { longitude, latitude }) => {
     setSelectedCity(event.target.value);
     mapRef.current?.flyTo({ center: [longitude, latitude], duration: 2000 });
+    const map = mapRef.current.getMap();
+    map.addSource("point", {
+      type: "geojson",
+      data: {
+        type: "Point",
+        coordinates: [longitude, latitude],
+      },
+    });
+    map.addLayer({
+      id: "point",
+      type: "circle",
+      source: "point",
+      paint: {
+        "circle-radius": 10,
+        "circle-color": "red",
+      },
+    });
   }, []);
 
   return (
