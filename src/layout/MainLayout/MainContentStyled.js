@@ -34,7 +34,7 @@ const MainContentStyled = styled("main", {
       marginLeft:
         menuOrientation === MenuOrientation.VERTICAL ? -(drawerWidth - 72) : 20,
       width: `calc(100% - ${drawerWidth}px)`,
-      marginTop: menuOrientation === MenuOrientation.HORIZONTAL ? 135 : 88,
+      marginTop: menuOrientation === MenuOrientation.HORIZONTAL ? 65 : 88,
     },
   }),
   ...(open && {
@@ -43,10 +43,10 @@ const MainContentStyled = styled("main", {
       duration: theme.transitions.duration.shorter + 200,
     }),
     marginLeft: menuOrientation === MenuOrientation.HORIZONTAL ? 20 : 0,
-    marginTop: menuOrientation === MenuOrientation.HORIZONTAL ? 135 : 88,
+    marginTop: menuOrientation === MenuOrientation.HORIZONTAL ? 65 : 88,
     width: `calc(100% - ${drawerWidth}px)`,
     [theme.breakpoints.up("md")]: {
-      marginTop: menuOrientation === MenuOrientation.HORIZONTAL ? 135 : 88,
+      marginTop: menuOrientation === MenuOrientation.HORIZONTAL ? 65 : 88,
     },
   }),
   [theme.breakpoints.down("md")]: {

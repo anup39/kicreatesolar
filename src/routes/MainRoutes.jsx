@@ -21,6 +21,9 @@ const AppClients = Loadable(
 //   lazy(() => import("views/application/e-commerce/ProductDetails"))
 // );
 
+// map routing
+const AppMap = Loadable(lazy(() => import("../views/application/map")));
+
 // sample page routing
 const SamplePage = Loadable(lazy(() => import("../views/sample-page")));
 
@@ -39,6 +42,10 @@ const MainRoutes = {
       element: <AppClients />,
       loader: productsLoader,
       errorElement: <ErrorBoundary />,
+    },
+    {
+      path: "/forms/map",
+      element: <AppMap />,
     },
 
     // {

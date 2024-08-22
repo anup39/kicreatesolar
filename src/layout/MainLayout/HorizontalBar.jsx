@@ -55,11 +55,11 @@ const HorizontalBar = () => {
           zIndex: 1098,
         }}
       >
-        <Container maxWidth={container ? "lg" : false}>
+        {/* <Container maxWidth={container ? "lg" : false}>
           <Box sx={{ display: "flex", alignItems: "center" }}>
             <MenuList />
           </Box>
-        </Container>
+        </Container> */}
       </AppBar>
     </ElevationScroll>
   );

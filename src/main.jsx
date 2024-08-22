@@ -11,7 +11,7 @@ import { ConfigProvider } from "./contexts/ConfigContext.jsx";
 import "./assets/scss/style.scss";
 
 // map
-// import "mapbox-gl/dist/mapbox-gl.css";
+import "mapbox-gl/dist/mapbox-gl.css";
 
 // google-fonts
 import "@fontsource/roboto/400.css";

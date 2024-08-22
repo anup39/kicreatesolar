@@ -67,7 +67,7 @@ const MainLayout = () => {
       </AppBar>
 
       {/* menu / drawer */}
-      {menu}
+      {/* {menu} */}
 
       {/* main content */}
       <MainContentStyled
@@ -78,7 +78,7 @@ const MainLayout = () => {
           {...(!container && { sx: { px: { xs: 0 } } })}
         >
           {/* breadcrumb */}
-          <Breadcrumbs />
+          {/* <Breadcrumbs /> */}
           <Outlet />
         </Container>
       </MainContentStyled>
