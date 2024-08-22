@@ -13,6 +13,7 @@ import ProfileSection from "./ProfileSection";
 import LocalizationSection from "./LocalizationSection";
 import MegaMenuSection from "./MegaMenuSection";
 import FullScreenSection from "./FullScreenSection";
+import SwitchTheme from "./SwitchTheme";
 // import NotificationSection from "./NotificationSection";
 
 import { handlerDrawerOpen, useGetMenuMaster } from "../../../api/menu";
@@ -20,6 +21,7 @@ import { MenuOrientation, ThemeMode } from "../../../config";
 
 // assets
 import { IconMenu2 } from "@tabler/icons-react";
+import { Switch } from "@mui/material";
 
 // ==============================|| MAIN NAVBAR / HEADER ||============================== //
 
@@ -84,8 +86,13 @@ const Header = () => {
       <Box sx={{ flexGrow: 1 }} />
 
       {/* mega-menu */}
-      <Box sx={{ display: { xs: "none", md: "block" } }}>
+      {/* <Box sx={{ display: { xs: "none", md: "block" } }}>
         <MegaMenuSection />
+      </Box> */}
+
+      {/* change-theme */}
+      <Box sx={{ display: { xs: "none", md: "block" } }}>
+        <SwitchTheme />
       </Box>
 
       {/* live customization & localization */}
