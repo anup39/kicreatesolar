@@ -57,7 +57,10 @@ export default function componentStyleOverrides(
     MuiCardContent: {
       styleOverrides: {
         root: {
-          padding: "24px",
+          padding: "0px",
+          "&:last-child": {
+            paddingBottom: "0px",
+          },
         },
       },
     },

@@ -169,7 +169,7 @@ const ProfileSection = () => {
                           spacing={0.5}
                           alignItems="center"
                         >
-                          <Typography variant="h4">Happy Droning,</Typography>
+                          {/* <Typography variant="h4">Happy Droning,</Typography> */}
                           <Typography
                             component="span"
                             variant="h4"
@@ -179,7 +179,7 @@ const ProfileSection = () => {
                           </Typography>
                         </Stack>
                         <Typography variant="subtitle2">
-                          Project Admin
+                          General User
                         </Typography>
                       </Stack>
                       <Divider />
@@ -205,7 +205,7 @@ const ProfileSection = () => {
                             "& .MuiListItemButton-root": { mt: 0.5 },
                           }}
                         >
-                          <ListItemButton
+                          {/* <ListItemButton
                             sx={{ borderRadius: `${borderRadius}px` }}
                             selected={selectedIndex === 0}
                             onClick={(event) =>
@@ -226,7 +226,7 @@ const ProfileSection = () => {
                                 </Typography>
                               }
                             />
-                          </ListItemButton>
+                          </ListItemButton> */}
                           <ListItemButton
                             sx={{ borderRadius: `${borderRadius}px` }}
                             selected={selectedIndex === 4}

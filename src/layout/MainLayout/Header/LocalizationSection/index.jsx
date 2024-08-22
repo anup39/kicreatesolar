@@ -152,7 +152,7 @@ const LocalizationSection = () => {
                         }
                       />
                     </ListItemButton>
-                    <ListItemButton
+                    {/* <ListItemButton
                       selected={i18n === "fr"}
                       onClick={(event) => handleListItemClick(event, "fr")}
                     >
@@ -210,7 +210,7 @@ const LocalizationSection = () => {
                           </Grid>
                         }
                       />
-                    </ListItemButton>
+                    </ListItemButton> */}
                   </List>
                 )}
               </Paper>

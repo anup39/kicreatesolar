@@ -17,7 +17,7 @@ export const ThemeDirection = {
 };
 
 const config = {
-  menuOrientation: MenuOrientation.VERTICAL,
+  menuOrientation: MenuOrientation.HORIZONTAL,
   miniDrawer: false,
   fontFamily: `'Roboto', sans-serif`,
   borderRadius: 8,
