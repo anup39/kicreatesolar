@@ -6,7 +6,7 @@ import Box from "@mui/material/Box";
 
 const MapContainerStyled = styled(Box)({
   zIndex: 0,
-  height: 576,
+  height: "calc(100vh - 85px)", // Adjust 64px based on AppBar height
   overflow: "hidden",
   position: "relative",
   borderRadius: 4,

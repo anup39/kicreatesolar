@@ -39,7 +39,7 @@ const Map = () => {
             <ViewportAnimation
               {...mapConfiguration}
               data={cities.filter((city) => city.state === "Gujarat")}
-              mapStyle={MAPBOX_THEMES.outdoors}
+              mapStyle={MAPBOX_THEMES.satellite}
             />
           </MapContainerStyled>
         </MainCard>
