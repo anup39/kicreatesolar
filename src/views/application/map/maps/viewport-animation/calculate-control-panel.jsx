@@ -11,14 +11,14 @@ import { IconTrash } from "@tabler/icons-react";
 
 // project-import
 import CalculateControlPanelStyled from "../../../../../ui-component/third-party/map/CalculateControlPanelStyled";
-import { Typography } from "@mui/material";
+import { CircularProgress, Typography } from "@mui/material";
 
 // ==============================|| VIEWPORT ANIMATION - CONTROL ||============================== //
 
 function CalculateControlPanel({ data, selectedCity, onSelectCity }) {
   return (
     <CalculateControlPanelStyled>
-      <Box>
+      {/* <Box>
         <Typography
           sx={{
             marginLeft: 4,
@@ -30,6 +30,14 @@ function CalculateControlPanel({ data, selectedCity, onSelectCity }) {
         >
           CALCULATE
         </Typography>
+      </Box> */}
+      <Box>
+        <CircularProgress
+          sx={{
+            marginLeft: 6,
+            padding: 1,
+          }}
+        />
       </Box>
     </CalculateControlPanelStyled>
   );

@@ -10,6 +10,7 @@ import DeleteControlPanel from "./delete-control-panel";
 import KeepoutControlPanel from "./keepout-control-panel";
 import CalculateControlPanel from "./calculate-control-panel";
 import ResultControlPanel from "./result-control-panel";
+import InfoControlPanel from "./info-control-panel";
 import MapControl from "../../../../../ui-component/third-party/map/MapControl";
 
 // ==============================|| MAP - VIEWPORT ANIMATION ||============================== //
@@ -75,6 +76,11 @@ function ViewportAnimation({ data, ...other }) {
         onSelectCity={onSelectCity}
       />
       <ResultControlPanel
+        data={data}
+        selectedCity={selectedCity}
+        onSelectCity={onSelectCity}
+      />
+      <InfoControlPanel
         data={data}
         selectedCity={selectedCity}
         onSelectCity={onSelectCity}
