@@ -1,5 +1,7 @@
 import PropTypes from "prop-types";
 import { useRef, useState, useCallback, memo } from "react";
+import { useDispatch } from "../../../../../store";
+import { openSnackbar } from "../../../../../store/slices/snackbar";
 
 // third-party
 import Map from "react-map-gl";
@@ -17,6 +19,7 @@ import MapControl from "../../../../../ui-component/third-party/map/MapControl";
 
 function ViewportAnimation({ data, ...other }) {
   const mapRef = useRef(null);
+  const dispatch = useDispatch();
 
   const [selectedCity, setSelectedCity] = useState(data[2].city);
 
@@ -42,6 +45,25 @@ function ViewportAnimation({ data, ...other }) {
     });
   }, []);
 
+  const addCart = () => {
+    console.log("clicked");
+    dispatch(
+      openSnackbar({
+        open: true,
+        message: "Main area already in map",
+        variant: "alert",
+        alert: {
+          color: "error",
+        },
+        close: false,
+        anchorOrigin: {
+          vertical: "top",
+          horizontal: "center",
+        },
+      })
+    );
+  };
+
   return (
     <Map
       initialViewState={{
@@ -56,6 +78,7 @@ function ViewportAnimation({ data, ...other }) {
     >
       <MapControl />
       <DrawControlPanel
+        onClick={addCart}
         data={data}
         selectedCity={selectedCity}
         onSelectCity={onSelectCity}

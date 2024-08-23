@@ -15,13 +15,14 @@ import { Typography } from "@mui/material";
 
 // ==============================|| VIEWPORT ANIMATION - CONTROL ||============================== //
 
-function DrawControlPanel({ data, selectedCity, onSelectCity }) {
+function DrawControlPanel({ onClick, data, selectedCity, onSelectCity }) {
   return (
     <DrawControlPanelStyled>
       <Box
         sx={{
           marginLeft: 2,
         }}
+        onClick={onClick}
       >
         <Typography variant="h6">Draw area</Typography>
       </Box>
