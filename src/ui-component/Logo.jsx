@@ -4,8 +4,11 @@ import { useTheme } from "@mui/material/styles";
 // project imports
 import { ThemeMode } from "../config";
 
-import logoDark from "../assets/images/logo-dark.svg";
-import logo from "../assets/images/logo.svg";
+// import logoDark from "../assets/images/logo-dark.svg";
+// import logo from "../assets/images/logo.svg";
+
+import logoDark from "../assets/images/logo-no-background.svg";
+import logo from "../assets/images/logo-no-background.svg";
 
 // ==============================|| LOGO SVG ||============================== //
 
