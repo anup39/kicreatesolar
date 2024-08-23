@@ -7,9 +7,9 @@ import Map from "react-map-gl";
 // project-import
 import DrawControlPanel from "./draw-control-panel";
 import DeleteControlPanel from "./delete-control-panel";
-import keepoutControlPanel from "./keepout-control-panel";
-import MapControl from "../../../../../ui-component/third-party/map/MapControl";
 import KeepoutControlPanel from "./keepout-control-panel";
+import CalculateControlPanel from "./calculate-control-panel";
+import MapControl from "../../../../../ui-component/third-party/map/MapControl";
 
 // ==============================|| MAP - VIEWPORT ANIMATION ||============================== //
 
@@ -64,6 +64,11 @@ function ViewportAnimation({ data, ...other }) {
         onSelectCity={onSelectCity}
       />
       <KeepoutControlPanel
+        data={data}
+        selectedCity={selectedCity}
+        onSelectCity={onSelectCity}
+      />
+      <CalculateControlPanel
         data={data}
         selectedCity={selectedCity}
         onSelectCity={onSelectCity}
