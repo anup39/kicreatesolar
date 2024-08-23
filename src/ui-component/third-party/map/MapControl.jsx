@@ -24,20 +24,67 @@ const MapControl = ({
   hideNavigationn,
   hideGeocoder,
 }) => {
-  const [features, setFeatures] = useState({});
+  const [featuresmain, setFeaturesMain] = useState({});
+  const [featureskeepout, setFeaturesKeepout] = useState({});
 
-  const onUpdate = useCallback((e) => {
-    setFeatures((currFeatures) => {
-      const newFeatures = { ...currFeatures };
-      for (const f of e.features) {
-        newFeatures[f.id] = f;
+  console.log(featuresmain, "featuresmain");
+  console.log(featureskeepout, "featureskeepout");
+
+  const onCreate = useCallback(
+    (e) => {
+      console.log(drawRef.current.component, "drawRef");
+      const component = drawRef.current.component;
+      if (component === "main") {
+        setFeaturesMain((currFeatures) => {
+          const newFeatures = { ...currFeatures };
+          for (const f of e.features) {
+            newFeatures[f.id] = f;
+          }
+          return newFeatures;
+        });
+      } else {
+        setFeaturesKeepout((currFeatures) => {
+          const newFeatures = { ...currFeatures };
+          for (const f of e.features) {
+            newFeatures[f.id] = f;
+          }
+          return newFeatures;
+        });
       }
-      return newFeatures;
-    });
-  }, []);
+    },
+    [drawRef]
+  );
+
+  const onUpdate = useCallback(
+    (e) => {
+      console.log(e, "event");
+      // console.log(drawRef.current.component, "drawRef");
+      const id = e.features[0].id;
+
+      if (featuresmain[id]) {
+        setFeaturesMain((currFeatures) => {
+          const newFeatures = { ...currFeatures };
+          for (const f of e.features) {
+            newFeatures[f.id] = f;
+          }
+          return newFeatures;
+        });
+      }
+      if (featureskeepout[id]) {
+        setFeaturesKeepout((currFeatures) => {
+          const newFeatures = { ...currFeatures };
+          for (const f of e.features) {
+            newFeatures[f.id] = f;
+          }
+          return newFeatures;
+        });
+      }
+    },
+    [featuresmain, featureskeepout]
+  );
 
   const onDelete = useCallback((e) => {
-    setFeatures((currFeatures) => {
+    setFeaturesMain((currFeatures) => {
       const newFeatures = { ...currFeatures };
       for (const f of e.features) {
         delete newFeatures[f.id];
@@ -63,7 +110,7 @@ const MapControl = ({
         ref={drawRef}
         position="top-left"
         displayControlsDefault={false}
-        onCreate={onUpdate}
+        onCreate={onCreate}
         onUpdate={onUpdate}
         onDelete={onDelete}
       />

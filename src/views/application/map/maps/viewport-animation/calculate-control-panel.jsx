@@ -18,7 +18,7 @@ import { CircularProgress, Typography } from "@mui/material";
 function CalculateControlPanel({ data, selectedCity, onSelectCity }) {
   return (
     <CalculateControlPanelStyled>
-      {/* <Box>
+      <Box>
         <Typography
           sx={{
             marginLeft: 4,
@@ -30,15 +30,15 @@ function CalculateControlPanel({ data, selectedCity, onSelectCity }) {
         >
           CALCULATE
         </Typography>
-      </Box> */}
-      <Box>
+      </Box>
+      {/* <Box>
         <CircularProgress
           sx={{
             marginLeft: 6,
             padding: 1,
           }}
         />
-      </Box>
+      </Box> */}
     </CalculateControlPanelStyled>
   );
 }

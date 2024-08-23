@@ -47,12 +47,12 @@ function ViewportAnimation({ data, ...other }) {
     });
   }, []);
 
-  const handleDraw = () => {
+  const handleDrawMain = () => {
     console.log("clicked");
     // const map = mapRef.current;
     // console.log(mapRef.current, "map");
 
-    changeModeTo("draw_polygon");
+    changeModeTo("draw_polygon", "main");
 
     // dispatch(
     //   openSnackbar({
@@ -71,7 +71,32 @@ function ViewportAnimation({ data, ...other }) {
     // );
   };
 
-  const changeModeTo = (mode) => {
+  const handleDrawKeepout = () => {
+    console.log("clicked");
+    // const map = mapRef.current;
+    // console.log(mapRef.current, "map");
+
+    changeModeTo("draw_polygon", "keepout");
+
+    // dispatch(
+    //   openSnackbar({
+    //     open: true,
+    //     message: "Main area already in map",
+    //     variant: "alert",
+    //     alert: {
+    //       color: "error",
+    //     },
+    //     close: false,
+    //     anchorOrigin: {
+    //       vertical: "top",
+    //       horizontal: "center",
+    //     },
+    //   })
+    // );
+  };
+
+  const changeModeTo = (mode, component) => {
+    drawRef.current.component = component;
     drawRef.current?.changeMode(mode);
     setDrawMode(mode);
   };
@@ -90,7 +115,7 @@ function ViewportAnimation({ data, ...other }) {
     >
       <MapControl drawRef={drawRef} changeModeTo={changeModeTo} />
       <DrawControlPanel
-        onClick={handleDraw}
+        onClick={handleDrawMain}
         data={data}
         selectedCity={selectedCity}
         onSelectCity={onSelectCity}
@@ -101,6 +126,7 @@ function ViewportAnimation({ data, ...other }) {
         onSelectCity={onSelectCity}
       />
       <KeepoutControlPanel
+        onClick={handleDrawKeepout}
         data={data}
         selectedCity={selectedCity}
         onSelectCity={onSelectCity}

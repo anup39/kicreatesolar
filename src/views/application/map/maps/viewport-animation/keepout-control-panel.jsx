@@ -15,13 +15,14 @@ import { Typography } from "@mui/material";
 
 // ==============================|| VIEWPORT ANIMATION - CONTROL ||============================== //
 
-function KeepoutControlPanel({ data, selectedCity, onSelectCity }) {
+function KeepoutControlPanel({ onClick, data, selectedCity, onSelectCity }) {
   return (
     <KeepoutControlPanelStyled>
       <Box
         sx={{
           marginLeft: 2,
         }}
+        onClick={onClick}
       >
         <Typography variant="h6">Create keepout</Typography>
       </Box>
