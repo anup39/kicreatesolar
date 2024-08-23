@@ -7,7 +7,7 @@ import {
   ScaleControl,
   GeolocateControl,
 } from "react-map-gl";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import GeocoderControl from "./GeocoderControl";
 import DrawControl from "./DrawControl";
 
@@ -17,6 +17,7 @@ import MapControlsStyled from "./MapControlsStyled";
 // ==============================|| MAP BOX - CONTROL ||============================== //
 
 const MapControl = ({
+  drawRef,
   hideScale,
   hideGeolocate,
   hideFullscreen,
@@ -24,6 +25,7 @@ const MapControl = ({
   hideGeocoder,
 }) => {
   const [features, setFeatures] = useState({});
+
   const onUpdate = useCallback((e) => {
     setFeatures((currFeatures) => {
       const newFeatures = { ...currFeatures };
@@ -43,6 +45,10 @@ const MapControl = ({
       return newFeatures;
     });
   }, []);
+
+  // const onModeChange = useCallback((e) => {
+  //   setDrawMode(e.mode);
+  // }, []);
   return (
     <>
       <MapControlsStyled />
@@ -54,13 +60,9 @@ const MapControl = ({
         />
       )}
       <DrawControl
+        ref={drawRef}
         position="top-left"
         displayControlsDefault={false}
-        controls={{
-          polygon: true,
-          trash: true,
-        }}
-        defaultMode="draw_polygon"
         onCreate={onUpdate}
         onUpdate={onUpdate}
         onDelete={onDelete}
@@ -79,6 +81,7 @@ const MapControl = ({
 };
 
 MapControl.propTypes = {
+  drawRef: PropTypes.object,
   hideScale: PropTypes.bool,
   hideGeolocate: PropTypes.bool,
   hideFullscreen: PropTypes.bool,

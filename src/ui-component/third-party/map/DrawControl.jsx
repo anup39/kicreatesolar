@@ -1,8 +1,9 @@
 import MapboxDraw from "@mapbox/mapbox-gl-draw";
 import { useControl } from "react-map-gl";
+import React from "react";
 
-export default function DrawControl(props) {
-  useControl(
+const DrawControl = React.forwardRef((props, ref) => {
+  const drawRef = useControl(
     () => new MapboxDraw(props),
     ({ map }) => {
       map.on("draw.create", props.onCreate);
@@ -19,11 +20,11 @@ export default function DrawControl(props) {
     }
   );
 
-  return null;
-}
+  React.useImperativeHandle(ref, () => drawRef, [drawRef]); // This way I exposed drawRef outside the component
 
-DrawControl.defaultProps = {
-  onCreate: () => {},
-  onUpdate: () => {},
-  onDelete: () => {},
-};
+  return null;
+});
+
+DrawControl.displayName = "DrawControl";
+
+export default DrawControl;

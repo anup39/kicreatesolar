@@ -18,8 +18,10 @@ import MapControl from "../../../../../ui-component/third-party/map/MapControl";
 // ==============================|| MAP - VIEWPORT ANIMATION ||============================== //
 
 function ViewportAnimation({ data, ...other }) {
+  const drawRef = useRef();
   const mapRef = useRef(null);
   const dispatch = useDispatch();
+  const [drawMode, setDrawMode] = useState("draw_polygon");
 
   const [selectedCity, setSelectedCity] = useState(data[2].city);
 
@@ -45,23 +47,33 @@ function ViewportAnimation({ data, ...other }) {
     });
   }, []);
 
-  const addCart = () => {
+  const handleDraw = () => {
     console.log("clicked");
-    dispatch(
-      openSnackbar({
-        open: true,
-        message: "Main area already in map",
-        variant: "alert",
-        alert: {
-          color: "error",
-        },
-        close: false,
-        anchorOrigin: {
-          vertical: "top",
-          horizontal: "center",
-        },
-      })
-    );
+    // const map = mapRef.current;
+    // console.log(mapRef.current, "map");
+
+    changeModeTo("draw_polygon");
+
+    // dispatch(
+    //   openSnackbar({
+    //     open: true,
+    //     message: "Main area already in map",
+    //     variant: "alert",
+    //     alert: {
+    //       color: "error",
+    //     },
+    //     close: false,
+    //     anchorOrigin: {
+    //       vertical: "top",
+    //       horizontal: "center",
+    //     },
+    //   })
+    // );
+  };
+
+  const changeModeTo = (mode) => {
+    drawRef.current?.changeMode(mode);
+    setDrawMode(mode);
   };
 
   return (
@@ -76,9 +88,9 @@ function ViewportAnimation({ data, ...other }) {
       ref={mapRef}
       {...other}
     >
-      <MapControl />
+      <MapControl drawRef={drawRef} changeModeTo={changeModeTo} />
       <DrawControlPanel
-        onClick={addCart}
+        onClick={handleDraw}
         data={data}
         selectedCity={selectedCity}
         onSelectCity={onSelectCity}
