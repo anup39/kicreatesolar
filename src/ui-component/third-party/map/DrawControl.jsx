@@ -20,6 +20,8 @@ const DrawControl = React.forwardRef((props, ref) => {
     }
   );
 
+  // console.log(MapboxDraw.modes, "MapboxDraw.modes");
+
   React.useImperativeHandle(ref, () => drawRef, [drawRef]); // This way I exposed drawRef outside the component
 
   return null;

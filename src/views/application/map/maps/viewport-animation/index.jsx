@@ -49,8 +49,8 @@ function ViewportAnimation({ data, ...other }) {
 
   const handleDrawMain = () => {
     console.log("clicked");
-    // const map = mapRef.current;
-    // console.log(mapRef.current, "map");
+    const map = mapRef.current.getMap();
+    console.log(map, "map");
 
     changeModeTo("draw_polygon", "main");
 

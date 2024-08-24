@@ -10,6 +10,7 @@ import {
 import { useState, useCallback, useRef } from "react";
 import GeocoderControl from "./GeocoderControl";
 import DrawControl from "./DrawControl";
+import MapboxDraw from "@mapbox/mapbox-gl-draw";
 
 // project-import
 import MapControlsStyled from "./MapControlsStyled";
@@ -96,6 +97,12 @@ const MapControl = ({
   // const onModeChange = useCallback((e) => {
   //   setDrawMode(e.mode);
   // }, []);
+
+  const modes = {
+    ...MapboxDraw.modes,
+    draw_polygon: MapboxDraw.modes.draw_polygon,
+  };
+
   return (
     <>
       <MapControlsStyled />
@@ -108,6 +115,7 @@ const MapControl = ({
       )}
       <DrawControl
         ref={drawRef}
+        modes={modes}
         position="top-left"
         displayControlsDefault={false}
         onCreate={onCreate}
