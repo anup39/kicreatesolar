@@ -29,6 +29,7 @@ function ViewportAnimation({ ...other }) {
   const handleDrawMain = useCallback(() => {
     console.log("Draw Main started");
     const map = mapRef.current.getMap();
+    console.log(map, "map");
     drawRef.current.component = "main";
     drawRef.current?.changeMode("draw_polygon");
     setDrawMode("draw_polygon");
