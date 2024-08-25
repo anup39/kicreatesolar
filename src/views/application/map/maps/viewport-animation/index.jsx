@@ -90,11 +90,11 @@ function ViewportAnimation({ ...other }) {
       {...other}
     >
       <MapControl
-        drawRef
-        featuresmain
-        featureskeepout
-        onFeaturesMain
-        onFeaturesKeepout
+        drawRef={drawRef}
+        featuresmain={featuresmain}
+        featureskeepout={featureskeepout}
+        onFeaturesMain={onFeaturesMain}
+        onFeaturesKeepout={onFeaturesKeepout}
       />
       <DrawControlPanel onClick={handleDrawMain} />
       <DeleteControlPanel />

@@ -76,6 +76,7 @@ const MapControl = ({
         <GeocoderControl
           mapboxAccessToken={import.meta.env.VITE_APP_MAPBOX_ACCESS_TOKEN}
           position="top-left"
+          marker={false}
         />
       )}
       <DrawControl
@@ -91,6 +92,7 @@ const MapControl = ({
         <GeolocateControl
           position="top-left"
           positionOptions={{ enableHighAccuracy: true }}
+          showAccuracyCircle={false}
         />
       )}
       {!hideFullscreen && <FullscreenControl position="top-left" />}

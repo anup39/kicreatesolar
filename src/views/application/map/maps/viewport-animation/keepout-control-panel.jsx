@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { memo } from "react";
 
 // material-ui
-import { Box, Typography } from "@mui/material/Box";
+import { Box, Typography } from "@mui/material";
 import { IconSquareToggleHorizontal } from "@tabler/icons-react";
 
 // project-import

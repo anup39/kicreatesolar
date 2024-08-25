@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { memo } from "react";
 
 // material-ui
-import { Box, Typography } from "@mui/material/Box";
+import { Box, Typography } from "@mui/material";
 
 // project-import
 import CalculateControlPanelStyled from "../../../../../ui-component/third-party/map/CalculateControlPanelStyled";
