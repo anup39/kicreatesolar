@@ -7,96 +7,61 @@ import {
   ScaleControl,
   GeolocateControl,
 } from "react-map-gl";
-import { useState, useCallback, useRef } from "react";
-import GeocoderControl from "./GeocoderControl";
-import DrawControl from "./DrawControl";
+import { useCallback } from "react";
 import MapboxDraw from "@mapbox/mapbox-gl-draw";
 
 // project-import
 import MapControlsStyled from "./MapControlsStyled";
+import GeocoderControl from "./GeocoderControl";
+import DrawControl from "./DrawControl";
 
 // ==============================|| MAP BOX - CONTROL ||============================== //
 
 const MapControl = ({
   drawRef,
+  featuresmain,
+  featureskeepout,
+  onFeaturesMain,
+  onFeaturesKeepout,
   hideScale,
   hideGeolocate,
   hideFullscreen,
   hideNavigationn,
   hideGeocoder,
 }) => {
-  const [featuresmain, setFeaturesMain] = useState({});
-  const [featureskeepout, setFeaturesKeepout] = useState({});
-
-  console.log(featuresmain, "featuresmain");
-  console.log(featureskeepout, "featureskeepout");
-
   const onCreate = useCallback(
     (e) => {
       console.log(drawRef.current.component, "drawRef");
       const component = drawRef.current.component;
       if (component === "main") {
-        setFeaturesMain((currFeatures) => {
-          const newFeatures = { ...currFeatures };
-          for (const f of e.features) {
-            newFeatures[f.id] = f;
-          }
-          return newFeatures;
-        });
+        onFeaturesMain(e);
       } else {
-        setFeaturesKeepout((currFeatures) => {
-          const newFeatures = { ...currFeatures };
-          for (const f of e.features) {
-            newFeatures[f.id] = f;
-          }
-          return newFeatures;
-        });
+        onFeaturesKeepout(e);
       }
     },
-    [drawRef]
+    [onFeaturesMain, onFeaturesKeepout, drawRef]
   );
 
   const onUpdate = useCallback(
     (e) => {
-      console.log(e, "event");
-      // console.log(drawRef.current.component, "drawRef");
       const id = e.features[0].id;
 
       if (featuresmain[id]) {
-        setFeaturesMain((currFeatures) => {
-          const newFeatures = { ...currFeatures };
-          for (const f of e.features) {
-            newFeatures[f.id] = f;
-          }
-          return newFeatures;
-        });
+        onFeaturesMain(e);
       }
       if (featureskeepout[id]) {
-        setFeaturesKeepout((currFeatures) => {
-          const newFeatures = { ...currFeatures };
-          for (const f of e.features) {
-            newFeatures[f.id] = f;
-          }
-          return newFeatures;
-        });
+        onFeaturesKeepout(e);
       }
     },
-    [featuresmain, featureskeepout]
+    [featuresmain, featureskeepout, onFeaturesMain, onFeaturesKeepout]
   );
 
-  const onDelete = useCallback((e) => {
-    setFeaturesMain((currFeatures) => {
-      const newFeatures = { ...currFeatures };
-      for (const f of e.features) {
-        delete newFeatures[f.id];
-      }
-      return newFeatures;
-    });
-  }, []);
-
-  // const onModeChange = useCallback((e) => {
-  //   setDrawMode(e.mode);
-  // }, []);
+  const onDelete = useCallback(
+    (e) => {
+      onFeaturesMain(e);
+    },
+    [onFeaturesMain]
+  );
 
   const modes = {
     ...MapboxDraw.modes,
@@ -137,6 +102,10 @@ const MapControl = ({
 
 MapControl.propTypes = {
   drawRef: PropTypes.object,
+  featuresmain: PropTypes.object,
+  featureskeepout: PropTypes.object,
+  onFeaturesMain: PropTypes.func,
+  onFeaturesKeepout: PropTypes.func,
   hideScale: PropTypes.bool,
   hideGeolocate: PropTypes.bool,
   hideFullscreen: PropTypes.bool,

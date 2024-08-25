@@ -2,13 +2,7 @@ import PropTypes from "prop-types";
 import { memo } from "react";
 
 // material-ui
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import { Divider, Typography } from "@mui/material";
-
+import { Divider, Typography, Box, Card } from "@mui/material";
 import {
   IconCalculator,
   IconSolarPanel,
@@ -375,7 +369,7 @@ const solar_details = {
   solar_potential: 1000,
 };
 
-function ResultControlPanel({ data, selectedCity, onSelectCity }) {
+function ResultControlPanel() {
   return (
     <ResultControlPanelStyled>
       <Box
@@ -535,10 +529,6 @@ function ResultControlPanel({ data, selectedCity, onSelectCity }) {
   );
 }
 
-ResultControlPanel.propTypes = {
-  data: PropTypes.array,
-  selectedCity: PropTypes.string,
-  onSelectCity: PropTypes.func,
-};
+ResultControlPanel.propTypes = {};
 
 export default memo(ResultControlPanel);

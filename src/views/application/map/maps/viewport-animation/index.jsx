@@ -17,43 +17,21 @@ import MapControl from "../../../../../ui-component/third-party/map/MapControl";
 
 // ==============================|| MAP - VIEWPORT ANIMATION ||============================== //
 
-function ViewportAnimation({ data, ...other }) {
+function ViewportAnimation({ ...other }) {
+  const dispatch = useDispatch();
   const drawRef = useRef();
   const mapRef = useRef(null);
-  const dispatch = useDispatch();
   const [drawMode, setDrawMode] = useState("draw_polygon");
 
-  const [selectedCity, setSelectedCity] = useState(data[2].city);
+  const [featuresmain, setFeaturesMain] = useState({});
+  const [featureskeepout, setFeaturesKeepout] = useState({});
 
-  const onSelectCity = useCallback((event, { longitude, latitude }) => {
-    setSelectedCity(event.target.value);
-    mapRef.current?.flyTo({ center: [longitude, latitude], duration: 2000 });
+  const handleDrawMain = useCallback(() => {
+    console.log("Draw Main started");
     const map = mapRef.current.getMap();
-    map.addSource("point", {
-      type: "geojson",
-      data: {
-        type: "Point",
-        coordinates: [longitude, latitude],
-      },
-    });
-    map.addLayer({
-      id: "point",
-      type: "circle",
-      source: "point",
-      paint: {
-        "circle-radius": 10,
-        "circle-color": "red",
-      },
-    });
-  }, []);
-
-  const handleDrawMain = () => {
-    console.log("clicked");
-    const map = mapRef.current.getMap();
-    console.log(map, "map");
-
-    changeModeTo("draw_polygon", "main");
-
+    drawRef.current.component = "main";
+    drawRef.current?.changeMode("draw_polygon");
+    setDrawMode("draw_polygon");
     // dispatch(
     //   openSnackbar({
     //     open: true,
@@ -69,36 +47,34 @@ function ViewportAnimation({ data, ...other }) {
     //     },
     //   })
     // );
+  }, [mapRef, drawRef]);
+
+  const handleDrawKeepout = useCallback(() => {
+    console.log("Draw Keepout started");
+    const map = mapRef.current.getMap();
+    drawRef.current.component = "keepout";
+    drawRef.current?.changeMode("draw_polygon");
+    setDrawMode("draw_polygon");
+  }, [mapRef, drawRef]);
+
+  const onFeaturesMain = (e) => {
+    setFeaturesMain((currFeatures) => {
+      const newFeatures = { ...currFeatures };
+      for (const f of e.features) {
+        newFeatures[f.id] = f;
+      }
+      return newFeatures;
+    });
   };
 
-  const handleDrawKeepout = () => {
-    console.log("clicked");
-    // const map = mapRef.current;
-    // console.log(mapRef.current, "map");
-
-    changeModeTo("draw_polygon", "keepout");
-
-    // dispatch(
-    //   openSnackbar({
-    //     open: true,
-    //     message: "Main area already in map",
-    //     variant: "alert",
-    //     alert: {
-    //       color: "error",
-    //     },
-    //     close: false,
-    //     anchorOrigin: {
-    //       vertical: "top",
-    //       horizontal: "center",
-    //     },
-    //   })
-    // );
-  };
-
-  const changeModeTo = (mode, component) => {
-    drawRef.current.component = component;
-    drawRef.current?.changeMode(mode);
-    setDrawMode(mode);
+  const onFeaturesKeepout = (event) => {
+    setFeaturesKeepout((currFeatures) => {
+      const newFeatures = { ...currFeatures };
+      for (const f of event.features) {
+        newFeatures[f.id] = f;
+      }
+      return newFeatures;
+    });
   };
 
   return (
@@ -113,46 +89,27 @@ function ViewportAnimation({ data, ...other }) {
       ref={mapRef}
       {...other}
     >
-      <MapControl drawRef={drawRef} changeModeTo={changeModeTo} />
-      <DrawControlPanel
-        onClick={handleDrawMain}
-        data={data}
-        selectedCity={selectedCity}
-        onSelectCity={onSelectCity}
+      <MapControl
+        drawRef
+        featuresmain
+        featureskeepout
+        onFeaturesMain
+        onFeaturesKeepout
       />
-      <DeleteControlPanel
-        data={data}
-        selectedCity={selectedCity}
-        onSelectCity={onSelectCity}
-      />
-      <KeepoutControlPanel
-        onClick={handleDrawKeepout}
-        data={data}
-        selectedCity={selectedCity}
-        onSelectCity={onSelectCity}
-      />
-      <CalculateControlPanel
-        data={data}
-        selectedCity={selectedCity}
-        onSelectCity={onSelectCity}
-      />
-      <ResultControlPanel
-        data={data}
-        selectedCity={selectedCity}
-        onSelectCity={onSelectCity}
-      />
-      <InfoControlPanel
-        data={data}
-        selectedCity={selectedCity}
-        onSelectCity={onSelectCity}
-      />
+      <DrawControlPanel onClick={handleDrawMain} />
+      <DeleteControlPanel />
+      <KeepoutControlPanel onClick={handleDrawKeepout} />
+      <CalculateControlPanel />
+      <ResultControlPanel />
+      <InfoControlPanel />
     </Map>
   );
 }
 
 ViewportAnimation.propTypes = {
-  data: PropTypes.array,
-  city: PropTypes.string,
+  mapboxAccessToken: PropTypes.string,
+  minZoom: PropTypes.number,
+  mapStyle: PropTypes.string,
 };
 
 export default memo(ViewportAnimation);
