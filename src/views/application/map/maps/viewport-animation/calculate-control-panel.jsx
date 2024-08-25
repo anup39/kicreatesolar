@@ -2,20 +2,14 @@ import PropTypes from "prop-types";
 import { memo } from "react";
 
 // material-ui
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import Box from "@mui/material/Box";
-
-import { IconTrash } from "@tabler/icons-react";
+import { Box, Typography } from "@mui/material";
 
 // project-import
 import CalculateControlPanelStyled from "../../../../../ui-component/third-party/map/CalculateControlPanelStyled";
-import { CircularProgress, Typography } from "@mui/material";
 
 // ==============================|| VIEWPORT ANIMATION - CONTROL ||============================== //
 
-function CalculateControlPanel({ data, selectedCity, onSelectCity }) {
+function CalculateControlPanel() {
   return (
     <CalculateControlPanelStyled>
       <Box>
@@ -43,10 +37,6 @@ function CalculateControlPanel({ data, selectedCity, onSelectCity }) {
   );
 }
 
-CalculateControlPanel.propTypes = {
-  data: PropTypes.array,
-  selectedCity: PropTypes.string,
-  onSelectCity: PropTypes.func,
-};
+CalculateControlPanel.propTypes = {};
 
 export default memo(CalculateControlPanel);

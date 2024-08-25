@@ -1,6 +1,7 @@
 import MapboxDraw from "@mapbox/mapbox-gl-draw";
 import { useControl } from "react-map-gl";
 import React from "react";
+import PropTypes from "prop-types";
 
 const DrawControl = React.forwardRef((props, ref) => {
   const drawRef = useControl(
@@ -19,14 +20,17 @@ const DrawControl = React.forwardRef((props, ref) => {
       position: props.position,
     }
   );
-
-  // console.log(MapboxDraw.modes, "MapboxDraw.modes");
-
   React.useImperativeHandle(ref, () => drawRef, [drawRef]); // This way I exposed drawRef outside the component
-
   return null;
 });
 
 DrawControl.displayName = "DrawControl";
 
 export default DrawControl;
+
+DrawControl.propTypes = {
+  onCreate: PropTypes.func,
+  onUpdate: PropTypes.func,
+  onDelete: PropTypes.func,
+  position: PropTypes.string,
+};

@@ -2,9 +2,6 @@ import PropTypes from "prop-types";
 import { memo } from "react";
 
 // material-ui
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
 import Box from "@mui/material/Box";
 
 import { IconRectangle } from "@tabler/icons-react";
@@ -15,7 +12,7 @@ import { Typography } from "@mui/material";
 
 // ==============================|| VIEWPORT ANIMATION - CONTROL ||============================== //
 
-function DrawControlPanel({ onClick, data, selectedCity, onSelectCity }) {
+function DrawControlPanel({ onClick }) {
   return (
     <DrawControlPanelStyled>
       <Box
@@ -44,9 +41,7 @@ function DrawControlPanel({ onClick, data, selectedCity, onSelectCity }) {
 }
 
 DrawControlPanel.propTypes = {
-  data: PropTypes.array,
-  selectedCity: PropTypes.string,
-  onSelectCity: PropTypes.func,
+  onClick: PropTypes.func,
 };
 
 export default memo(DrawControlPanel);

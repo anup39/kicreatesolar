@@ -4,7 +4,6 @@ import { memo } from "react";
 // material-ui
 import Box from "@mui/material/Box";
 import { Typography } from "@mui/material";
-
 import { IconInfoCircle } from "@tabler/icons-react";
 
 // project-import
@@ -12,7 +11,7 @@ import InfoControlPanelStyled from "../../../../../ui-component/third-party/map/
 
 // ==============================|| VIEWPORT ANIMATION - CONTROL ||============================== //
 
-function InfoControlPanel({ data, selectedCity, onSelectCity }) {
+function InfoControlPanel() {
   return (
     <InfoControlPanelStyled>
       <Box
@@ -59,10 +58,6 @@ function InfoControlPanel({ data, selectedCity, onSelectCity }) {
   );
 }
 
-InfoControlPanel.propTypes = {
-  data: PropTypes.array,
-  selectedCity: PropTypes.string,
-  onSelectCity: PropTypes.func,
-};
+InfoControlPanel.propTypes = {};
 
 export default memo(InfoControlPanel);

@@ -2,20 +2,15 @@ import PropTypes from "prop-types";
 import { memo } from "react";
 
 // material-ui
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import Box from "@mui/material/Box";
-
+import { Box, Typography } from "@mui/material";
 import { IconSquareToggleHorizontal } from "@tabler/icons-react";
 
 // project-import
 import KeepoutControlPanelStyled from "../../../../../ui-component/third-party/map/KeepoutControlPanelStyled";
-import { Typography } from "@mui/material";
 
 // ==============================|| VIEWPORT ANIMATION - CONTROL ||============================== //
 
-function KeepoutControlPanel({ onClick, data, selectedCity, onSelectCity }) {
+function KeepoutControlPanel({ onClick }) {
   return (
     <KeepoutControlPanelStyled>
       <Box
@@ -44,9 +39,7 @@ function KeepoutControlPanel({ onClick, data, selectedCity, onSelectCity }) {
 }
 
 KeepoutControlPanel.propTypes = {
-  data: PropTypes.array,
-  selectedCity: PropTypes.string,
-  onSelectCity: PropTypes.func,
+  onClick: PropTypes.func,
 };
 
 export default memo(KeepoutControlPanel);

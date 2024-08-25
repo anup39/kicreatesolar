@@ -10,7 +10,8 @@ import MapContainerStyled from "../../../ui-component/third-party/map/MapContain
 
 import ViewportAnimation from "./maps/viewport-animation";
 
-import { cities } from "../../../data/location";
+// data import
+// import { cities } from "../../../data/location";
 
 const MAPBOX_THEMES = {
   light: "mapbox://styles/mapbox/light-v10",
@@ -38,7 +39,6 @@ const Map = () => {
           <MapContainerStyled>
             <ViewportAnimation
               {...mapConfiguration}
-              data={cities.filter((city) => city.state === "Gujarat")}
               mapStyle={MAPBOX_THEMES.satellite}
             />
           </MapContainerStyled>
