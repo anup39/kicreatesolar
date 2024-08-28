@@ -12,12 +12,11 @@ import KeepoutControlPanelStyled from "../../../../../ui-component/third-party/m
 
 function KeepoutControlPanel({ onClick }) {
   return (
-    <KeepoutControlPanelStyled>
+    <KeepoutControlPanelStyled onClick={onClick}>
       <Box
         sx={{
           marginLeft: 2,
         }}
-        onClick={onClick}
       >
         <Typography variant="h6">Create keepout</Typography>
       </Box>

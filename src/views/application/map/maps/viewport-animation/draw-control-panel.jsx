@@ -14,12 +14,11 @@ import { Typography } from "@mui/material";
 
 function DrawControlPanel({ onClick }) {
   return (
-    <DrawControlPanelStyled>
+    <DrawControlPanelStyled onClick={onClick}>
       <Box
         sx={{
           marginLeft: 2,
         }}
-        onClick={onClick}
       >
         <Typography variant="h6">Draw area</Typography>
       </Box>
