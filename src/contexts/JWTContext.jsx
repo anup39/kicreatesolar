@@ -132,9 +132,7 @@ export const JWTProvider = ({ children }) => {
     dispatch({ type: LOGOUT });
   };
 
-  const resetPassword = async (email) => {
-    console.log(email);
-  };
+  const resetPassword = async (email) => {};
 
   const updateProfile = () => {};
 

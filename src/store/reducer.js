@@ -14,10 +14,14 @@ import snackbarReducer from "./slices/snackbar";
 import userReducer from "./slices/user";
 import cartReducer from "./slices/cart";
 // import kanbanReducer from "./slices/kanban";
+import drawnGeometry from "./slices/drawnGeometry";
+import mapview from "./slices/mapview";
 
 // ==============================|| COMBINE REDUCER ||============================== //
 
 const reducer = combineReducers({
+  mapview: mapview,
+  drawnGeometry: drawnGeometry,
   snackbar: snackbarReducer,
   cart: persistReducer(
     {
