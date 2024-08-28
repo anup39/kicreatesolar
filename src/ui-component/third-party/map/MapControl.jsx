@@ -29,6 +29,16 @@ const MapControl = ({
   hideNavigationn,
   hideGeocoder,
 }) => {
+  console.log(drawRef, "drawRef");
+  console.log(featuresmain, "featuresmain");
+  console.log(featureskeepout, "featureskeepout");
+  console.log(onFeaturesMain, "onFeaturesMain");
+  console.log(onFeaturesKeepout, "onFeaturesKeepout");
+  console.log(hideScale, "hideScale");
+  console.log(hideGeolocate, "hideGeolocate");
+  console.log(hideFullscreen, "hideFullscreen");
+  console.log(hideNavigationn, "hideNavigationn");
+  console.log(hideGeocoder, "hideGeocoder");
   const onCreate = useCallback(
     (e) => {
       console.log(drawRef.current.component, "drawRef");
