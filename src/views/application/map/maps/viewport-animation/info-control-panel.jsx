@@ -54,6 +54,26 @@ function InfoControlPanel() {
           Draw keep-outs in places where you donot want solar panels
         </Typography>
       </Box>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "flex-start",
+        }}
+      >
+        <IconInfoCircle stroke={2} />
+        <Typography
+          sx={{
+            // padding: 1,
+            marginTop: 0.3,
+          }}
+          variant="h6"
+          align="center"
+        >
+          Press Esc to quit drawing
+        </Typography>
+      </Box>
     </InfoControlPanelStyled>
   );
 }
