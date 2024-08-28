@@ -22,9 +22,19 @@ function ViewportAnimation({ ...other }) {
   const drawRef = useRef();
   const mapRef = useRef(null);
   const [drawMode, setDrawMode] = useState("draw_polygon");
+  const [showResult, setShowResult] = useState(true);
+  const [minimizeResult, setMinimizeResult] = useState(false);
 
   const [featuresmain, setFeaturesMain] = useState({});
   const [featureskeepout, setFeaturesKeepout] = useState({});
+
+  const onShowResult = (value) => {
+    setShowResult(value);
+  };
+
+  const onMinimizeResult = (value) => {
+    setMinimizeResult(value);
+  };
 
   const handleDrawMain = useCallback(() => {
     console.log("Draw Main started");
@@ -101,7 +111,13 @@ function ViewportAnimation({ ...other }) {
       <DeleteControlPanel />
       <KeepoutControlPanel onClick={handleDrawKeepout} />
       <CalculateControlPanel />
-      <ResultControlPanel />
+      {showResult && (
+        <ResultControlPanel
+          minimizeResult={minimizeResult}
+          onShowResult={onShowResult}
+          onMinimizeResult={onMinimizeResult}
+        />
+      )}
       <InfoControlPanel />
     </Map>
   );
