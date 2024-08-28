@@ -31,11 +31,7 @@ const SamplePage = Loadable(lazy(() => import("../views/sample-page")));
 
 const MainRoutes = {
   path: "/",
-  element: (
-    <AuthGuard>
-      <MainLayout />
-    </AuthGuard>
-  ),
+  element: <MainLayout />,
   children: [
     {
       path: "/apps/clients",

@@ -9,11 +9,17 @@ import {
 } from "react-map-gl";
 import { useCallback } from "react";
 import MapboxDraw from "@mapbox/mapbox-gl-draw";
+import { useDispatch } from "../../../store";
 
 // project-import
 import MapControlsStyled from "./MapControlsStyled";
 import GeocoderControl from "./GeocoderControl";
 import DrawControl from "./DrawControl";
+import {
+  setShowKeyInfo,
+  setWKTGeometry,
+  setTypeOfGeometry,
+} from "../../../store/slices/drawnGeometry";
 
 // ==============================|| MAP BOX - CONTROL ||============================== //
 
@@ -29,31 +35,45 @@ const MapControl = ({
   hideNavigationn,
   hideGeocoder,
 }) => {
+  const dispatch = useDispatch();
   const onCreate = useCallback(
-    (e) => {
-      console.log(drawRef.current.component, "drawRef");
-      const component = drawRef.current.component;
-      if (component === "main") {
-        onFeaturesMain(e);
-      } else {
-        onFeaturesKeepout(e);
+    (event) => {
+      dispatch(setShowKeyInfo(true));
+      const feature = event.features;
+      const geometry = feature[0].geometry;
+      const type_of_geometry = feature[0].geometry.type;
+      if (type_of_geometry === "Polygon") {
+        const coordinates = geometry.coordinates[0];
+        // const wktCoordinates = coordinates
+        //   .map((coord) => `${coord[0]} ${coord[1]}`)
+        //   .join(", ");
+        // const wktCoordinates_final = `POLYGON ((${wktCoordinates}))`;
+        dispatch(setWKTGeometry([coordinates]));
+        dispatch(setTypeOfGeometry(type_of_geometry));
       }
     },
-    [onFeaturesMain, onFeaturesKeepout, drawRef]
+    [dispatch]
   );
 
   const onUpdate = useCallback(
-    (e) => {
-      const id = e.features[0].id;
+    (event) => {
+      dispatch(setShowKeyInfo(true));
+      // const draw = map.draw;
+      const feature = event.features;
+      const geometry = feature[0].geometry;
+      const type_of_geometry = feature[0].geometry.type;
 
-      if (featuresmain[id]) {
-        onFeaturesMain(e);
-      }
-      if (featureskeepout[id]) {
-        onFeaturesKeepout(e);
+      if (type_of_geometry === "Polygon") {
+        const coordinates = geometry.coordinates[0];
+        // const wktCoordinates = coordinates
+        //   .map((coord) => `${coord[0]} ${coord[1]}`)
+        //   .join(", ");
+        // const wktCoordinates_final = `POLYGON ((${wktCoordinates}))`;
+        dispatch(setWKTGeometry([coordinates]));
+        dispatch(setTypeOfGeometry(type_of_geometry));
       }
     },
-    [featuresmain, featureskeepout, onFeaturesMain, onFeaturesKeepout]
+    [dispatch]
   );
 
   const onDelete = useCallback(

@@ -22,6 +22,7 @@
     "@mui/x-charts": "^7.13.0",
     "@reduxjs/toolkit": "^2.2.6",
     "@tabler/icons-react": "^2.47.0",
+    "@turf/turf": "^7.1.0",
     "axios": "^1.7.2",
     "chance": "^1.1.11",
     "formik": "^2.4.5",

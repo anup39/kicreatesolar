@@ -9,10 +9,15 @@ import CalculateControlPanelStyled from "../../../../../ui-component/third-party
 
 // ==============================|| VIEWPORT ANIMATION - CONTROL ||============================== //
 
-function CalculateControlPanel() {
+function CalculateControlPanel({ mapRef }) {
+  const handleCalculate = () => {
+    console.log("Calculate");
+    const map = mapRef.current.getMap();
+    console.log(map.getStyle().sources, "map.getStyle().sources");
+  };
   return (
     <CalculateControlPanelStyled>
-      <Box>
+      <Box onClick={handleCalculate}>
         <Typography
           sx={{
             marginLeft: 4,
@@ -37,6 +42,8 @@ function CalculateControlPanel() {
   );
 }
 
-CalculateControlPanel.propTypes = {};
+CalculateControlPanel.propTypes = {
+  mapRef: PropTypes.object,
+};
 
 export default memo(CalculateControlPanel);

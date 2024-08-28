@@ -11,7 +11,7 @@ const CalculateControlPanelStyled = styled(Box)(({ theme }) => ({
   zIndex: 9,
   minWidth: 140,
   position: "absolute",
-  bottom: 8, // Position it at the bottom
+  bottom: 100, // Position it at the bottom
   left: "50%", // Center it horizontally
   transform: "translateX(-50%)", // Adjust for the width of the element
   padding: 2,
