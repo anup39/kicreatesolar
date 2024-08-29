@@ -21,6 +21,7 @@ import {
 
 // third-party
 import Map from "react-map-gl";
+import AddLayerAndSourceToMap from "../../../../../utils/map/AddLayerAndSourceToMap";
 
 // project-import
 import DrawControlPanel from "./draw-control-panel";
@@ -435,6 +436,38 @@ function ViewportAnimation({ ...other }) {
     }
   }, [handleSave, dispatch]);
 
+  const handleMaploaded = (event) => {
+    const map = event.target;
+    const fillType = "fill";
+    let url = maingeojosn;
+    ["Main", "Keepout"].forEach((layer_name) => {
+      if (layer_name === "Keepout") {
+        url = keepoutgeojson;
+      }
+      AddLayerAndSourceToMap({
+        map: map,
+        layerId: layer_name + "layer",
+        sourceId: layer_name + "source",
+        url: url,
+        source_layer: layer_name + "source",
+        // popUpRef: popUpRef,
+        showPopup: false,
+        style: {
+          fill_color: layer_name === "Main" ? "red" : "yellow",
+          fill_opacity: 0.2,
+          stroke_color: "black",
+        },
+        zoomToLayer: url.features.length > 0 ? true : false,
+        extent: turf.bbox(url),
+        geomType: "geojson",
+        fillType: fillType,
+        trace: false,
+        component: "map",
+      });
+    });
+    console.log(map, "map");
+  };
+
   return (
     <Map
       initialViewState={{
@@ -446,6 +479,9 @@ function ViewportAnimation({ ...other }) {
       }}
       ref={mapRef}
       {...other}
+      onLoad={(event) => {
+        handleMaploaded(event);
+      }}
     >
       <MapControl
         drawRef={drawRef}
