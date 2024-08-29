@@ -109,6 +109,7 @@ function ViewportAnimation({ ...other }) {
             },
           })
         );
+        drawRef.current?.changeMode("simple_select");
       } else {
         drawRef.current?.changeMode("draw_polygon");
       }
@@ -121,12 +122,18 @@ function ViewportAnimation({ ...other }) {
   }, [mapRef, drawRef, dispatch, mode, maingeojosn]);
 
   const handleDrawKeepout = useCallback(() => {
+    const layer_name = "Keepout";
     console.log("Draw Keepout started");
     const map = mapRef.current.getMap();
     drawRef.current.component = "keepout";
     drawRef.current?.changeMode("draw_polygon");
     setDrawMode("draw_polygon");
-  }, [mapRef, drawRef]);
+    // // need id here
+    dispatch(setId(layer_name));
+    dispatch(setViewName(layer_name));
+    dispatch(setMode("Draw"));
+    dispatch(setComponent("category"));
+  }, [mapRef, drawRef, dispatch]);
 
   const onFeaturesMain = (e) => {
     setFeaturesMain((currFeatures) => {
