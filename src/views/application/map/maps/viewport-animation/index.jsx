@@ -470,6 +470,8 @@ function ViewportAnimation({ ...other }) {
         fillType: fillType,
         trace: false,
         component: "map",
+        dispatch: dispatch,
+        drawRef: drawRef.current,
       });
     });
     console.log(map, "map");

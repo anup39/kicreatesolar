@@ -8,6 +8,14 @@ import {
 import { Provider } from "react-redux";
 import ReactDOM, { Root } from "react-dom/client";
 import { RefObject } from "react";
+import {
+  setWKTGeometry,
+  setTypeOfGeometry,
+  setMode,
+  setFeatureId,
+  setComponent,
+  setViewName,
+} from "../../store/slices/drawnGeometry";
 
 interface AddLayerProps {
   map: Map;
@@ -24,6 +32,8 @@ interface AddLayerProps {
   trace: boolean;
   component: string;
   popUpRef: RefObject<HTMLDivElement>;
+  dispatch: any;
+  draw: any;
 }
 
 function AddLayerAndSourceToMap({
@@ -39,6 +49,8 @@ function AddLayerAndSourceToMap({
   geomType,
   fillType,
   trace,
+  dispatch,
+  draw,
 }: AddLayerProps) {
   // Rest of your component code remains unchanged
 
@@ -174,6 +186,38 @@ function AddLayerAndSourceToMap({
         { hover: false }
       );
     }
+  });
+
+  map.on("click", layerId, (e) => {
+    console.log(e, "e");
+
+    draw.deleteAll();
+    draw.add(features[0]);
+    // Here setting the state of the draw object in drawPolygon
+    dispatch(setWKTGeometry(null));
+    dispatch(setTypeOfGeometry(null));
+    dispatch(setMode("Edit"));
+    dispatch(setFeatureId(feature_id));
+    dispatch(setComponent(properties.component));
+    dispatch(setViewName(properties.view_name));
+    if (properties.component === "category") {
+      dispatch(setId(feature_id));
+    }
+    //Note: Here i have to find if the clicked featue is of category or project
+    console.log(properties, "properties");
+    console.log(view_name, "view_name");
+    if (view_name) {
+      const layerId = view_name + "layer";
+      map.setFilter(layerId, null);
+    }
+    const layerId = properties.view_name + "layer";
+    console.log(layerId, "layerId");
+    map.setFilter(layerId, null);
+    const layer = map.getLayer(layerId);
+    const existingFilter = layer.filter || ["all"];
+    const filterCondition = ["!=", ["id"], feature_id];
+    const updatedFilter = ["all", existingFilter, filterCondition];
+    map.setFilter(layerId, updatedFilter);
   });
 }
 
