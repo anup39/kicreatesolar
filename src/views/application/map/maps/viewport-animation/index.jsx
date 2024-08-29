@@ -75,6 +75,7 @@ function ViewportAnimation({ ...other }) {
     console.log(map.getStyle().layers, "map.getStyle().layers");
 
     drawRef.current.component = "main";
+    drawRef.current.deleteAll();
     drawRef.current?.changeMode("draw_polygon");
     setDrawMode("draw_polygon");
 
@@ -126,7 +127,9 @@ function ViewportAnimation({ ...other }) {
     console.log("Draw Keepout started");
     const map = mapRef.current.getMap();
     drawRef.current.component = "keepout";
+    drawRef.current.deleteAll();
     drawRef.current?.changeMode("draw_polygon");
+    console.log(drawRef.current, "drawRef.current");
     setDrawMode("draw_polygon");
     // // need id here
     dispatch(setId(layer_name));
@@ -320,7 +323,7 @@ function ViewportAnimation({ ...other }) {
           if (mapRef.current?.getMap()) {
             const sourceId = view_name + "source";
             const layerId = view_name + "layer";
-            const map = window.map_global;
+            const map = mapRef.current?.getMap();
             if (map.getSource(sourceId) && map.getLayer(layerId)) {
               const source = map.getSource(sourceId);
               if (view_name === "Main") {
@@ -471,11 +474,26 @@ function ViewportAnimation({ ...other }) {
         trace: false,
         component: "map",
         dispatch: dispatch,
-        drawRef: drawRef.current,
+        draw: drawRef.current,
+        view_name: view_name,
       });
     });
     console.log(map, "map");
   };
+
+  const [isDrawing, setIsDrawing] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+
+  const handleCustomDraw = () => {
+    console.log("handleCustomDraw");
+    setIsDrawing(true);
+  };
+
+  useEffect(() => {
+    if (loaded) {
+      console.log("loaded");
+    }
+  }, [loaded]);
 
   return (
     <Map
@@ -499,7 +517,7 @@ function ViewportAnimation({ ...other }) {
         onFeaturesMain={onFeaturesMain}
         onFeaturesKeepout={onFeaturesKeepout}
       />
-      <DrawControlPanel onClick={handleDrawMain} />
+      <DrawControlPanel onClick={handleCustomDraw} />
       <DeleteControlPanel />
       <KeepoutControlPanel onClick={handleDrawKeepout} />
       <CalculateControlPanel mapRef={mapRef} />
