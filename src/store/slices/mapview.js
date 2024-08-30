@@ -37,6 +37,20 @@ export const MapView = createSlice({
     setApiDetails: (state, action) => {
       state.api_details = action.payload;
     },
+    resetMapview: (state) => {
+      state.showMapLoader = false;
+      state.maingeojosn = {
+        type: "FeatureCollection",
+        features: [],
+      };
+      state.keepoutgeojson = {
+        type: "FeatureCollection",
+        features: [],
+      };
+      state.showCalculate = true;
+      state.solar_details = null;
+      state.api_details = null;
+    },
   },
 });
 
@@ -48,6 +62,7 @@ export const {
   setShowCalculate,
   setSolarDetails,
   setApiDetails,
+  resetMapview,
 } = MapView.actions;
 
 export default MapView.reducer;

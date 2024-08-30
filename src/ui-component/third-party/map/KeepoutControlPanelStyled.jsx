@@ -11,7 +11,7 @@ const KeepoutControlPanelStyled = styled(Box)(({ theme }) => ({
   zIndex: 9,
   minWidth: 140,
   position: "absolute",
-  top: 100,
+  top: 55,
   right: 8,
   padding: 2,
   borderRadius: 20,

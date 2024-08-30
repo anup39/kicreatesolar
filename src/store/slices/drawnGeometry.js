@@ -39,6 +39,16 @@ export const DrawnGeometry = createSlice({
     setShowKeyInfo: (state, action) => {
       state.show_key_info = action.payload;
     },
+    resetDrawGeometry: (state) => {
+      state.wkt_geometry = null;
+      state.type_of_geometry = null;
+      state.id = null;
+      state.view_name = null;
+      state.mode = null;
+      state.feature_id = null;
+      state.component = null;
+      state.show_key_info = false;
+    },
   },
 });
 
@@ -52,6 +62,7 @@ export const {
   setFeatureId,
   setComponent,
   setShowKeyInfo,
+  resetDrawGeometry,
 } = DrawnGeometry.actions;
 
 export default DrawnGeometry.reducer;

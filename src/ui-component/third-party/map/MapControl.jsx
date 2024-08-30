@@ -29,6 +29,7 @@ const MapControl = ({
   featureskeepout,
   onFeaturesMain,
   onFeaturesKeepout,
+  onShowFinish,
   hideScale,
   hideGeolocate,
   hideFullscreen,
@@ -51,9 +52,10 @@ const MapControl = ({
         dispatch(setWKTGeometry([coordinates]));
         dispatch(setTypeOfGeometry(type_of_geometry));
         console.log(drawRef.current, "drawRef.current");
+        onShowFinish(true);
       }
     },
-    [dispatch, drawRef]
+    [dispatch, drawRef, onShowFinish]
   );
 
   const onUpdate = useCallback(
@@ -72,9 +74,10 @@ const MapControl = ({
         // const wktCoordinates_final = `POLYGON ((${wktCoordinates}))`;
         dispatch(setWKTGeometry([coordinates]));
         dispatch(setTypeOfGeometry(type_of_geometry));
+        onShowFinish(true);
       }
     },
-    [dispatch]
+    [dispatch, drawRef, onShowFinish]
   );
 
   const onDelete = useCallback(
