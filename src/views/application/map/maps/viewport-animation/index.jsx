@@ -12,20 +12,30 @@ import {
   setTypeOfGeometry,
   setFeatureId,
   setShowKeyInfo,
+  resetDrawGeometry,
 } from "../../../../../store/slices/drawnGeometry";
 
 import {
   editGeojson,
   editGeojsonKeepout,
+  resetMapview,
+  setApiDetails,
+  setSolarDetails,
 } from "../../../../../store/slices/mapview";
 
 // third-party
 import Map from "react-map-gl";
+import AddLayerAndSourceToMap from "../../../../../utils/map/AddLayerAndSourceToMap";
+import axios from "axios";
 
 // project-import
 import DrawControlPanel from "./draw-control-panel";
-import DeleteControlPanel from "./delete-control-panel";
 import KeepoutControlPanel from "./keepout-control-panel";
+import ResetControlPanel from "./reset-control-panel";
+import DeleteControlPanel from "./delete-control-panel";
+import EditControlPanel from "./edit-control-panel";
+import SaveControlPanel from "./save-control-panel";
+import CancelControlPanel from "./cancel-control-panel";
 import CalculateControlPanel from "./calculate-control-panel";
 import ResultControlPanel from "./result-control-panel";
 import InfoControlPanel from "./info-control-panel";
@@ -39,6 +49,8 @@ function ViewportAnimation({ ...other }) {
   const { mode } = useSelector((state) => state.drawnGeometry);
   const maingeojosn = useSelector((state) => state.mapview.maingeojosn);
   const keepoutgeojson = useSelector((state) => state.mapview.keepoutgeojson);
+  const api_details = useSelector((state) => state.mapview.api_details);
+  const solar_details = useSelector((state) => state.mapview.solar_details);
 
   const wkt_geometry = useSelector((state) => state.drawnGeometry.wkt_geometry);
   const type_of_geometry = useSelector(
@@ -53,11 +65,17 @@ function ViewportAnimation({ ...other }) {
   const mapRef = useRef(null);
 
   const [drawMode, setDrawMode] = useState("draw_polygon");
-  const [showResult, setShowResult] = useState(true);
+  const [showResult, setShowResult] = useState(false);
   const [minimizeResult, setMinimizeResult] = useState(false);
 
   const [featuresmain, setFeaturesMain] = useState({});
   const [featureskeepout, setFeaturesKeepout] = useState({});
+  const [showEdit, setShowEdit] = useState(false);
+  const [showFinish, setShowFinish] = useState(false);
+
+  const [clickedProperties, setClickedProperties] = useState(null);
+
+  const [dataLoading, setDataLoading] = useState(false);
 
   const onShowResult = (value) => {
     setShowResult(value);
@@ -67,13 +85,28 @@ function ViewportAnimation({ ...other }) {
     setMinimizeResult(value);
   };
 
+  const onShowEdit = (value) => {
+    setShowEdit(value);
+  };
+
+  const onShowFinish = (value) => {
+    setShowFinish(value);
+  };
+
+  const onClickedProperties = (value) => {
+    setClickedProperties(value);
+  };
+
   const handleDrawMain = useCallback(() => {
     console.log("Draw Main started");
+    setShowEdit(false);
+    setShowFinish(false);
     const map = mapRef.current.getMap();
     console.log(map.getStyle().sources, "map.getStyle().sources");
     console.log(map.getStyle().layers, "map.getStyle().layers");
 
     drawRef.current.component = "main";
+    drawRef.current.deleteAll();
     drawRef.current?.changeMode("draw_polygon");
     setDrawMode("draw_polygon");
 
@@ -108,6 +141,7 @@ function ViewportAnimation({ ...other }) {
             },
           })
         );
+        drawRef.current?.changeMode("simple_select");
       } else {
         drawRef.current?.changeMode("draw_polygon");
       }
@@ -120,12 +154,22 @@ function ViewportAnimation({ ...other }) {
   }, [mapRef, drawRef, dispatch, mode, maingeojosn]);
 
   const handleDrawKeepout = useCallback(() => {
+    setShowEdit(false);
+    setShowFinish(false);
+    const layer_name = "Keepout";
     console.log("Draw Keepout started");
     const map = mapRef.current.getMap();
     drawRef.current.component = "keepout";
+    drawRef.current.deleteAll();
     drawRef.current?.changeMode("draw_polygon");
+    console.log(drawRef.current, "drawRef.current");
     setDrawMode("draw_polygon");
-  }, [mapRef, drawRef]);
+    // // need id here
+    dispatch(setId(layer_name));
+    dispatch(setViewName(layer_name));
+    dispatch(setMode("Draw"));
+    dispatch(setComponent("category"));
+  }, [mapRef, drawRef, dispatch]);
 
   const onFeaturesMain = (e) => {
     setFeaturesMain((currFeatures) => {
@@ -226,10 +270,10 @@ function ViewportAnimation({ ...other }) {
                 dispatch(
                   openSnackbar({
                     open: true,
-                    message: "Sucessfully created ",
+                    message: "Sucessfully created Main",
                     variant: "alert",
                     alert: {
-                      color: "error",
+                      color: "success",
                     },
                     close: false,
                     anchorOrigin: {
@@ -238,6 +282,7 @@ function ViewportAnimation({ ...other }) {
                     },
                   })
                 );
+                setShowFinish(false);
               }
               if (view_name === "Keepout") {
                 console.log("Keepout");
@@ -278,10 +323,10 @@ function ViewportAnimation({ ...other }) {
                 dispatch(
                   openSnackbar({
                     open: true,
-                    message: "Sucessfully created ",
+                    message: "Sucessfully created Keepout",
                     variant: "alert",
                     alert: {
-                      color: "error",
+                      color: "success",
                     },
                     close: false,
                     anchorOrigin: {
@@ -290,6 +335,7 @@ function ViewportAnimation({ ...other }) {
                     },
                   })
                 );
+                setShowFinish(false);
               }
             }
             const drawInstance = drawRef.current;
@@ -303,7 +349,7 @@ function ViewportAnimation({ ...other }) {
             dispatch(setFeatureId(null));
             dispatch(setComponent(null));
           }
-        }, 3000);
+        }, 0);
       } else {
         console.log("Edit mode");
         // dispatch(setshowMapLoader(true));
@@ -312,7 +358,7 @@ function ViewportAnimation({ ...other }) {
           if (mapRef.current?.getMap()) {
             const sourceId = view_name + "source";
             const layerId = view_name + "layer";
-            const map = window.map_global;
+            const map = mapRef.current?.getMap();
             if (map.getSource(sourceId) && map.getLayer(layerId)) {
               const source = map.getSource(sourceId);
               if (view_name === "Main") {
@@ -435,17 +481,201 @@ function ViewportAnimation({ ...other }) {
     }
   }, [handleSave, dispatch]);
 
+  const handleMaploaded = (event) => {
+    const map = event.target;
+    const fillType = "fill";
+    let url = maingeojosn;
+    ["Main", "Keepout"].forEach((layer_name) => {
+      if (layer_name === "Keepout") {
+        url = keepoutgeojson;
+      }
+      AddLayerAndSourceToMap({
+        map: map,
+        layerId: layer_name + "layer",
+        sourceId: layer_name + "source",
+        url: url,
+        source_layer: layer_name + "source",
+        // popUpRef: popUpRef,
+        showPopup: false,
+        style: {
+          fill_color: layer_name === "Main" ? "red" : "yellow",
+          fill_opacity: 0.2,
+          stroke_color: "black",
+        },
+        zoomToLayer: url.features.length > 0 ? true : false,
+        extent: turf.bbox(url),
+        geomType: "geojson",
+        fillType: fillType,
+        trace: false,
+        component: "map",
+        dispatch: dispatch,
+        draw: drawRef.current,
+        view_name: view_name,
+        onShowEdit: onShowEdit,
+        onClickedProperties: onClickedProperties,
+      });
+    });
+    console.log(map, "map");
+  };
+
+  const handleCancel = () => {
+    console.log("Cancel");
+    const drawInstance = drawRef.current;
+    drawInstance.deleteAll();
+    drawInstance.changeMode("simple_select");
+    dispatch(setWKTGeometry(null));
+    dispatch(setTypeOfGeometry(null));
+    dispatch(setId(null));
+    dispatch(setViewName(null));
+    dispatch(setMode(null));
+    dispatch(setFeatureId(null));
+    dispatch(setComponent(null));
+    dispatch(setShowKeyInfo(false));
+    setShowFinish(false);
+  };
+
+  const handleEdit = () => {
+    const features = clickedProperties.features;
+    const properties = features[0].properties;
+    const feature_id = features[0].id;
+    console.log(feature_id, "feature_id");
+    console.log("Edit");
+
+    // Here now get the map object and then get the draw object and delete all the layers in draw and add the current features to the draw object
+    const map = mapRef.current.getMap();
+    const draw = drawRef.current;
+    draw.deleteAll();
+    draw.add(features[0]);
+    // Here setting the state of the draw object in drawPolygon
+    dispatch(setWKTGeometry(null));
+    dispatch(setTypeOfGeometry(null));
+    dispatch(setMode("Edit"));
+    dispatch(setFeatureId(feature_id));
+    dispatch(setComponent(properties.component));
+    dispatch(setViewName(properties.view_name));
+    if (properties.component === "category") {
+      dispatch(setId(feature_id));
+    }
+    //Note: Here i have to find if the clicked featue is of category or project
+    console.log(properties, "properties");
+    console.log(view_name, "view_name");
+    if (view_name) {
+      const layerId = view_name + "layer";
+      map.setFilter(layerId, null);
+    }
+    const layerId = properties.view_name + "layer";
+    console.log(layerId, "layerId");
+    map.setFilter(layerId, null);
+    const layer = map.getLayer(layerId);
+    const existingFilter = layer.filter || ["all"];
+    const filterCondition = ["!=", ["id"], feature_id];
+    const updatedFilter = ["all", existingFilter, filterCondition];
+    map.setFilter(layerId, updatedFilter);
+  };
+
+  const handleReset = () => {
+    dispatch(resetDrawGeometry());
+    dispatch(resetMapview());
+    drawRef?.current?.deleteAll();
+    const map = mapRef.current.getMap();
+    const sourceId = "Mainsource";
+    const layerId = "Mainlayer";
+    const source = map.getSource(sourceId);
+    source.setData({
+      type: "FeatureCollection",
+      features: [],
+    });
+    const sourceIdKeepout = "Keepoutsource";
+    const layerIdKeepout = "Keepoutlayer";
+    const sourceKeepout = map.getSource(sourceIdKeepout);
+    sourceKeepout.setData({
+      type: "FeatureCollection",
+      features: [],
+    });
+
+    setShowResult(false);
+  };
+
+  const handleCalculate = () => {
+    console.log("Calculating");
+    console.log(maingeojosn, "main geojson");
+    console.log(keepoutgeojson, "keepout geojson");
+    if (maingeojosn.features.length == 0) {
+      dispatch(
+        openSnackbar({
+          open: true,
+          message: "Please draw main area",
+          variant: "alert",
+          alert: {
+            color: "error",
+          },
+          close: false,
+          anchorOrigin: {
+            vertical: "top",
+            horizontal: "center",
+          },
+        })
+      );
+    } else {
+      let keepout_area = 0;
+      keepoutgeojson?.features?.forEach((feature) => {
+        keepout_area += parseInt(feature?.properties.area);
+      });
+      const roof_area =
+        parseInt(maingeojosn?.features[0]?.properties?.area) - keepout_area;
+      const number_of_panel = Math.ceil(roof_area / 2.38);
+      const panelcapacity = 470;
+      const peakpower = panelcapacity * number_of_panel;
+      const solar_potential = (
+        (roof_area / number_of_panel) *
+        panelcapacity
+      ).toFixed(2);
+      dispatch(
+        setSolarDetails({
+          roof_area,
+          number_of_panel,
+          panelcapacity,
+          solar_potential,
+        })
+      );
+      const lat =
+        maingeojosn?.features[0].properties?.centroid.geometry.coordinates[1];
+      const lon =
+        maingeojosn?.features[0].properties?.centroid.geometry.coordinates[0];
+
+      setDataLoading(true);
+      axios
+        .get(
+          `${
+            import.meta.env.VITE_APP_API
+          }/?lat=${lat}&lon=${lon}&peakpower=${peakpower}`
+        )
+        .then((res) => {
+          console.log(res, "res");
+          dispatch(setApiDetails(res.data));
+          setShowResult(true);
+          setDataLoading(false);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
+    }
+  };
+
   return (
     <Map
       initialViewState={{
-        latitude: 22.299405,
-        longitude: 73.208119,
-        zoom: 11,
+        latitude: 38.736946,
+        longitude: -9.142685,
+        zoom: 16,
         bearing: 0,
         pitch: 0,
       }}
       ref={mapRef}
       {...other}
+      onLoad={(event) => {
+        handleMaploaded(event);
+      }}
     >
       <MapControl
         drawRef={drawRef}
@@ -453,16 +683,38 @@ function ViewportAnimation({ ...other }) {
         featureskeepout={featureskeepout}
         onFeaturesMain={onFeaturesMain}
         onFeaturesKeepout={onFeaturesKeepout}
+        onShowFinish={onShowFinish}
       />
       <DrawControlPanel onClick={handleDrawMain} />
-      <DeleteControlPanel />
       <KeepoutControlPanel onClick={handleDrawKeepout} />
-      <CalculateControlPanel mapRef={mapRef} />
+
+      <ResetControlPanel onClick={handleReset} />
+
+      {showEdit ? (
+        <>
+          <DeleteControlPanel />
+          <EditControlPanel onClick={handleEdit} />
+        </>
+      ) : null}
+
+      {showFinish ? (
+        <>
+          <SaveControlPanel onClick={handleSave} />
+          <CancelControlPanel onClick={handleCancel} />
+        </>
+      ) : null}
+
+      <CalculateControlPanel
+        onClick={handleCalculate}
+        dataLoading={dataLoading}
+      />
       {showResult && (
         <ResultControlPanel
           minimizeResult={minimizeResult}
           onShowResult={onShowResult}
           onMinimizeResult={onMinimizeResult}
+          api_details={api_details}
+          solar_details={solar_details}
         />
       )}
       <InfoControlPanel />

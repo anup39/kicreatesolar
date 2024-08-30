@@ -40,7 +40,7 @@ const MainRoutes = {
       errorElement: <ErrorBoundary />,
     },
     {
-      path: "/forms/map",
+      path: "/map",
       element: <AppMap />,
     },
 

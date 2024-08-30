@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 
 // ==============================|| MAP BOX - CONTROL STYLED ||============================== //
 
-const DeleteControlPanelStyled = styled(Box)(({ theme }) => ({
+const CancelControlPanelStyled = styled(Box)(({ theme }) => ({
   backdropFilter: `blur(4px)`,
   WebkitBackdropFilter: `blur(4px)`,
   backgroundColor: alpha(theme.palette.background.paper, 1),
@@ -25,4 +25,4 @@ const DeleteControlPanelStyled = styled(Box)(({ theme }) => ({
   },
 }));
 
-export default DeleteControlPanelStyled;
+export default CancelControlPanelStyled;

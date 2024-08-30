@@ -71,7 +71,7 @@ function InfoControlPanel() {
           variant="h6"
           align="center"
         >
-          Press Esc to quit drawing
+          Press Esc to quit drawing. Enter to save the drawn area
         </Typography>
       </Box>
     </InfoControlPanelStyled>
