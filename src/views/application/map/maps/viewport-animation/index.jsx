@@ -481,20 +481,6 @@ function ViewportAnimation({ ...other }) {
     console.log(map, "map");
   };
 
-  const [isDrawing, setIsDrawing] = useState(false);
-  const [loaded, setLoaded] = useState(false);
-
-  const handleCustomDraw = () => {
-    console.log("handleCustomDraw");
-    setIsDrawing(true);
-  };
-
-  useEffect(() => {
-    if (loaded) {
-      console.log("loaded");
-    }
-  }, [loaded]);
-
   return (
     <Map
       initialViewState={{
@@ -517,7 +503,7 @@ function ViewportAnimation({ ...other }) {
         onFeaturesMain={onFeaturesMain}
         onFeaturesKeepout={onFeaturesKeepout}
       />
-      <DrawControlPanel onClick={handleCustomDraw} />
+      <DrawControlPanel onClick={handleDrawMain} />
       <DeleteControlPanel />
       <KeepoutControlPanel onClick={handleDrawKeepout} />
       <CalculateControlPanel mapRef={mapRef} />

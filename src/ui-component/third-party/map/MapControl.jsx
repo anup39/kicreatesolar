@@ -50,9 +50,10 @@ const MapControl = ({
         // const wktCoordinates_final = `POLYGON ((${wktCoordinates}))`;
         dispatch(setWKTGeometry([coordinates]));
         dispatch(setTypeOfGeometry(type_of_geometry));
+        console.log(drawRef.current, "drawRef.current");
       }
     },
-    [dispatch]
+    [dispatch, drawRef]
   );
 
   const onUpdate = useCallback(
