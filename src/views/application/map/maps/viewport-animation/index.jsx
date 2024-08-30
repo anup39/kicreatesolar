@@ -646,17 +646,9 @@ function ViewportAnimation({ ...other }) {
       setDataLoading(true);
       axios
         .get(
-          `https://re.jrc.ec.europa.eu/api/v5_2/PVcalc?outputformat=json&lat=${lat}&lon=${lon}&raddatabase=PVGIS-SARAH2&browser=0&peakpower=${
-            peakpower / 1000
-          }&loss=14&mountingplace=free&pvtechchoice=crystSi&angle=35&aspect=0&usehorizon=1&userhorizon=&js=1`
-          // {
-          //   headers: {
-          //     "Content-Type": "application/json",
-          //     "Access-Control-Allow-Origin": "*", // Allow all origins
-          //     "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS", // Allow specific methods
-          //     "Access-Control-Allow-Headers": "Content-Type, Authorization", // Allow specific headers
-          //   },
-          // }
+          `${
+            import.meta.env.VITE_APP_API
+          }/?lat=${lat}&lon=${lon}&peakpower=${peakpower}`
         )
         .then((res) => {
           console.log(res, "res");
