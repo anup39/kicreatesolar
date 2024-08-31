@@ -32,10 +32,8 @@ import axios from "axios";
 import DrawControlPanel from "./draw-control-panel";
 import KeepoutControlPanel from "./keepout-control-panel";
 import ResetControlPanel from "./reset-control-panel";
-import DeleteControlPanel from "./delete-control-panel";
-import EditControlPanel from "./edit-control-panel";
-import SaveControlPanel from "./save-control-panel";
-import CancelControlPanel from "./cancel-control-panel";
+import EditGroupPanel from "./edit-group-panel";
+import FinishGroupPanel from "./finish-group-panel";
 import CalculateControlPanel from "./calculate-control-panel";
 import ResultControlPanel from "./result-control-panel";
 import InfoControlPanel from "./info-control-panel";
@@ -70,7 +68,7 @@ function ViewportAnimation({ ...other }) {
 
   const [featuresmain, setFeaturesMain] = useState({});
   const [featureskeepout, setFeaturesKeepout] = useState({});
-  const [showEdit, setShowEdit] = useState(false);
+  const [showEdit, setShowEdit] = useState(true);
   const [showFinish, setShowFinish] = useState(false);
 
   const [clickedProperties, setClickedProperties] = useState(null);
@@ -690,18 +688,10 @@ function ViewportAnimation({ ...other }) {
 
       <ResetControlPanel onClick={handleReset} />
 
-      {showEdit ? (
-        <>
-          <DeleteControlPanel />
-          <EditControlPanel onClick={handleEdit} />
-        </>
-      ) : null}
+      {showEdit ? <EditGroupPanel handleEdit={handleEdit} /> : null}
 
       {showFinish ? (
-        <>
-          <SaveControlPanel onClick={handleSave} />
-          <CancelControlPanel onClick={handleCancel} />
-        </>
+        <FinishGroupPanel handleSave={handleSave} handleCancel={handleCancel} />
       ) : null}
 
       <CalculateControlPanel
