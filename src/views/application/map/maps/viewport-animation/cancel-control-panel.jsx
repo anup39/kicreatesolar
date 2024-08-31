@@ -14,13 +14,13 @@ import { Typography } from "@mui/material";
 function CancelControlPanel({ onClick }) {
   return (
     <CancelControlPanelStyled onClick={onClick}>
-      <Box
+      {/* <Box
         sx={{
           marginLeft: 2,
         }}
       >
         <Typography variant="h6">Cancel area</Typography>
-      </Box>
+      </Box> */}
       <Box
         sx={{
           display: "flex",
