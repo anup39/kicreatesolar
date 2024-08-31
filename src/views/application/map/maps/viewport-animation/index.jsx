@@ -70,7 +70,7 @@ function ViewportAnimation({ ...other }) {
 
   const [featuresmain, setFeaturesMain] = useState({});
   const [featureskeepout, setFeaturesKeepout] = useState({});
-  const [showEdit, setShowEdit] = useState(false);
+  const [showEdit, setShowEdit] = useState(true);
   const [showFinish, setShowFinish] = useState(false);
 
   const [clickedProperties, setClickedProperties] = useState(null);

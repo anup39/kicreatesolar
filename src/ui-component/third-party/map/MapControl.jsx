@@ -77,7 +77,7 @@ const MapControl = ({
         onShowFinish(true);
       }
     },
-    [dispatch, drawRef, onShowFinish]
+    [dispatch, onShowFinish]
   );
 
   const onDelete = useCallback(
