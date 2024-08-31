@@ -14,13 +14,13 @@ import { Typography } from "@mui/material";
 function SaveControlPanel({ onClick }) {
   return (
     <SaveControlPanelStyled onClick={onClick}>
-      <Box
+      {/* <Box
         sx={{
           marginLeft: 2,
         }}
       >
         <Typography variant="h6">Save area</Typography>
-      </Box>
+      </Box> */}
       <Box
         sx={{
           display: "flex",

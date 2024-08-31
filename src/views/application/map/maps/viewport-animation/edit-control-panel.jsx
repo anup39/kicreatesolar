@@ -14,13 +14,13 @@ import { Typography } from "@mui/material";
 function EditControlPanel({ onClick }) {
   return (
     <EditControlPanelStyled onClick={onClick}>
-      <Box
+      {/* <Box
         sx={{
           marginLeft: 2,
         }}
       >
         <Typography variant="h6">Edit area</Typography>
-      </Box>
+      </Box> */}
       <Box
         sx={{
           display: "flex",

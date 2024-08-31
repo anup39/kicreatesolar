@@ -14,13 +14,13 @@ import { Typography } from "@mui/material";
 function DeleteControlPanel() {
   return (
     <DeleteControlPanelStyled>
-      <Box
+      {/* <Box
         sx={{
           marginLeft: 2,
         }}
       >
         <Typography variant="h6">Delete area</Typography>
-      </Box>
+      </Box> */}
       <Box
         sx={{
           display: "flex",
