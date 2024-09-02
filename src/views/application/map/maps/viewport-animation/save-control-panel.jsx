@@ -4,10 +4,10 @@ import { memo } from "react";
 // material-ui
 import Box from "@mui/material/Box";
 import { IconSquareRoundedCheck } from "@tabler/icons-react";
+import { Tooltip } from "@mui/material";
 
 // project-import
 import SaveControlPanelStyled from "../../../../../ui-component/third-party/map/SaveControlPanelStyled";
-import { Typography } from "@mui/material";
 
 // ==============================|| VIEWPORT ANIMATION - CONTROL ||============================== //
 
@@ -32,7 +32,9 @@ function SaveControlPanel({ onClick }) {
           padding: 0.5,
         }}
       >
-        <IconSquareRoundedCheck stroke={2} color="white" />
+        <Tooltip title="Save area" placement="top">
+          <IconSquareRoundedCheck stroke={2} color="white" />
+        </Tooltip>
       </Box>
     </SaveControlPanelStyled>
   );

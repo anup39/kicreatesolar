@@ -4,6 +4,7 @@ import { memo } from "react";
 // material-ui
 import Box from "@mui/material/Box";
 import { IconCircleX } from "@tabler/icons-react";
+import { Tooltip } from "@mui/material";
 
 // project-import
 import CancelControlPanelStyled from "../../../../../ui-component/third-party/map/CancelControlPanelStyled";
@@ -32,7 +33,9 @@ function CancelControlPanel({ onClick }) {
           padding: 0.5,
         }}
       >
-        <IconCircleX stroke={2} color="white" />
+        <Tooltip title="Cancel area" placement="top">
+          <IconCircleX stroke={2} color="white" />
+        </Tooltip>
       </Box>
     </CancelControlPanelStyled>
   );

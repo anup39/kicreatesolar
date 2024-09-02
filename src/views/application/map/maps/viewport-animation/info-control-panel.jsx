@@ -31,7 +31,7 @@ function InfoControlPanel() {
           variant="h6"
           align="center"
         >
-          Select your rooftop to calculate to calculate the solar yield
+          Select your rooftop to calculate the solar yield
         </Typography>
       </Box>
       <Box
@@ -71,7 +71,7 @@ function InfoControlPanel() {
           variant="h6"
           align="center"
         >
-          Press Esc to quit drawing. Enter to save the drawn area
+          Press <b>Esc</b> to quit drawing. <b>Enter</b> to save the drawn area
         </Typography>
       </Box>
     </InfoControlPanelStyled>
