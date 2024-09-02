@@ -9,6 +9,7 @@ import { ThemeMode } from "../config";
 
 import logoDark from "../assets/images/logo-no-background.svg";
 import logo from "../assets/images/logo-no-background.svg";
+import logokicreate from "../assets/images/logo_kicreate.png";
 
 // ==============================|| LOGO SVG ||============================== //
 
@@ -17,11 +18,15 @@ const Logo = () => {
 
   return (
     <img
-      src={theme.palette.mode === ThemeMode.DARK ? logoDark : logo}
+      src={theme.palette.mode === ThemeMode.DARK ? logokicreate : logokicreate}
       alt="Berry"
       width="150"
-      height="20"
-      style={{ objectFit: "contain", objectPosition: "center" }} // Adjust these values as needed
+      height="50"
+      style={{
+        objectFit: "contain",
+        objectPosition: "center",
+        borderRadius: 6,
+      }} // Adjust these values as needed
     />
 
     // <svg
